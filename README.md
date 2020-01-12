@@ -1,14 +1,24 @@
 # jest-serializer-vue-tjw
 
+[![Build Status](https://travis-ci.org/tjw-lint/jest-serializer-vue-tjw.svg?branch=master)](https://travis-ci.org/tjw-lint/jest-serializer-vue-tjw)
+
 Jest Vue snapshot serializer
 
 
 ## Why use this over the Edd's?
 
-1. This version automatically removes `data-test="whatever"` from your snapshots
-1. This version has much better snapshot defaults
-1. This version lets you control your snapshot formatting with an API
+1. Both versions automatically remove `data-server-rendered="true"`.
+1. This version automatically removes `data-test="whatever"` from your snapshots.
+1. This version has much better snapshot defaults.
+1. This version lets you control your snapshot formatting with an API.
 1. Edd is busy and not maintaining his Vue repos right now. Cool dude though.
+
+
+## What do you mean by "much better snapshot defaults"?
+
+This is the before and after of using the default "pretty" options, and my options (which you can change with the API below, something Edd's version does not offer).
+
+![Difference between the snapshot settings, my version makes the formatting cleaner and easier to see what actually changed in a failing snapshot](https://user-images.githubusercontent.com/4629794/53278405-f8685880-36d6-11e9-92f0-127e0673a23a.gif)
 
 
 ## Installation
