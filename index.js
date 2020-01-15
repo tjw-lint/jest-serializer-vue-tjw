@@ -30,33 +30,23 @@ function loadOptions () {
     }
   };
 
-  if (
-    vueConfig &&
-    vueConfig.pluginOptions &&
-    vueConfig.pluginOptions.jestSerializer
-  ) {
-    if (vueConfig.pluginOptions.jestSerializer.pretty) {
-      options.pretty = vueConfig.pluginOptions.jestSerializer.pretty;
+  let vueConfigOptions = {};
+  if (vueConfig) {
+    if (vueConfig.pluginOptions && vueConfig.pluginOptions.jestSerializer) {
+      vueConfigOptions = vueConfig.pluginOptions.jestSerializer;
     }
-    if (typeof(vueConfig.pluginOptions.jestSerializer.removeDataTest) === 'boolean') {
-      options.removeDataTest = vueConfig.pluginOptions.jestSerializer.removeDataTest;
-    }
-    if (typeof(vueConfig.pluginOptions.jestSerializer.removeServerRendered) === 'boolean') {
-      options.removeServerRendered = vueConfig.pluginOptions.jestSerializer.removeServerRendered;
+    // Maybe one day these settings will be officially a part of the Vue CLI ¯\_(ツ)_/¯
+    if (vueConfig.jestSerializer) {
+      vueConfigOptions = vueConfig.jestSerializer;
     }
   }
 
-  // Maybe one day these settings will be officially a part of the Vue CLI ¯\_(ツ)_/¯
-  if (vueConfig && vueConfig.jestSerializer) {
-    if (vueConfig.jestSerializer.pretty) {
-      options.pretty = vueConfig.jestSerializer.pretty;
-    }
-    if (typeof(vueConfig.jestSerializer.removeDataTest) === 'boolean') {
-      options.removeDataTest = vueConfig.jestSerializer.removeDataTest;
-    }
-    if (typeof(vueConfig.jestSerializer.removeServerRendered) === 'boolean') {
-      options.removeServerRendered = vueConfig.jestSerializer.removeServerRendered;
-    }
+  options.pretty = vueConfigOptions.pretty || options.pretty;
+  if (typeof(vueConfigOptions.removeDataTest) === 'boolean') {
+    options.removeDataTest = vueConfigOptions.removeDataTest;
+  }
+  if (typeof(vueConfigOptions.removeServerRendered) === 'boolean') {
+    options.removeServerRendered = vueConfigOptions.removeServerRendered;
   }
 
   return options;
