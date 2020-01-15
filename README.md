@@ -21,24 +21,20 @@ This is the before and after of using the default "pretty" options, and my optio
 ![Difference between the snapshot settings, my version makes the formatting cleaner and easier to see what actually changed in a failing snapshot](https://user-images.githubusercontent.com/4629794/53278405-f8685880-36d6-11e9-92f0-127e0673a23a.gif)
 
 
-## Installation
-
-```
-npm install --save-dev jest-serializer-vue-tjw
-```
-
-
 ## Usage
 
-You need to tell Jest to use the serializer. Add this to your Jest config:
+1. `npm install --save-dev jest-serializer-vue-tjw`
+1. You need to tell Jest to use the serializer. Add this to your Jest config:
 
-```
-"snapshotSerializers": [
-  "<rootDir>/node_modules/jest-serializer-vue-tjw"
-]
-```
+   ```js
+   "snapshotSerializers": [
+     "<rootDir>/node_modules/jest-serializer-vue-tjw"
+   ]
+   ```
 
-And your snapshot tests will be pretty printed 💅
+Then just use `.toMatchSnapshot('optional snapshot name');` in your tests:
+
+**Example:**
 
 ```js
 import { shallowMount } from '@vue/test-utils';
