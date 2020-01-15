@@ -19,6 +19,7 @@ function loadOptions () {
   let options = {
     removeDataTest: true,
     removeServerRendered: true,
+    removeDataVId: true,
     // To see available options: https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js
     pretty: {
       indent_char: ' ',
@@ -47,6 +48,9 @@ function loadOptions () {
   }
   if (typeof(vueConfigOptions.removeServerRendered) === 'boolean') {
     options.removeServerRendered = vueConfigOptions.removeServerRendered;
+  }
+  if (typeof(vueConfigOptions.removeDataVId) === 'boolean') {
+    options.removeDataVId = vueConfigOptions.removeDataVId;
   }
 
   return options;
@@ -112,6 +116,22 @@ function removeDataTestAttributes (html, options) {
   return html;
 }
 
+/**
+ * This removes data-v-1234abcd="" from your snapshots.
+ *
+ * @param  {string} html    The markup being serialized.
+ * @param  {object} options Options object for this serializer
+ * @return {string}         Modified HTML string
+ */
+function removeScopedStylesDataVIDAttributes (html, options) {
+  if (!options || options.removeDataVId) {
+    // [-\w]+ will catch 1 or more instaces of a-z, A-Z, 0-9, hyphen (-), or underscore (_)
+    return html.replace(/ data-v-[-\w]+=""/g, '');
+  }
+  return html;
+}
+
+
 module.exports = {
   /**
    * Test function for Jest's serializer API.
@@ -138,6 +158,7 @@ module.exports = {
     }
     html = removeServerRenderedText(html, options);
     html = removeDataTestAttributes(html, options);
+    html = removeScopedStylesDataVIDAttributes(html, options);
 
     return pretty(html, options.pretty);
   }
