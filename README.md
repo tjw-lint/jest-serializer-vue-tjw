@@ -1,6 +1,6 @@
 # jest-serializer-vue-tjw
 
-[![Build Status](https://travis-ci.org/tjw-lint/jest-serializer-vue-tjw.svg?branch=master)](https://travis-ci.org/tjw-lint/jest-serializer-vue-tjw)
+[![Build Status](https://travis-ci.org/tjw-lint/jest-serializer-vue-tjw.svg?branch=master)](https://travis-ci.org/tjw-lint/jest-serializer-vue-tjw) ![MIT Licensed](https://img.shields.io/badge/License-MIT-brightgreen) ![Code of Conduct: No Ideologies](https://img.shields.io/badge/CoC-No%20Ideologies-blue)
 
 Jest Vue snapshot serializer
 
