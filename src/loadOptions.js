@@ -1,20 +1,41 @@
+const fs = require('fs');
+const path = require('path');
+
 /**
- * Loads the options from the vue.config.js file.
- * If none are found, fallsback to default settings.
+ * If a user set a boolean setting in their Vue config, we apply it here.
  *
- * @return {object}  An options object for what to remove and how to format the snapshot markup
+ * @param  {object} options          The default options object to override if needed
+ * @param  {object} vueConfigOptions The user's settings
+ * @return {object}                  Modified options object
  */
-function loadOptions () {
-  const fs = require('fs');
-  const path = require('path');
+function booleanSettings (options, vueConfigOptions) {
+  const booleanSettings = [
+    'removeDataTest',
+    'removeDataTestid',
+    'removeDataTestId',
+    'removeDataQa',
+    'removeServerRendered',
+    'removeDataVId',
+    'stringifyObjects'
+  ];
+  booleanSettings.forEach(function (setting) {
+    if (typeof(vueConfigOptions[setting]) === 'boolean') {
+      options[setting] = vueConfigOptions[setting];
+    }
+  });
+  return options;
+}
 
-  const vueConfigLocation = path.join(process.cwd(), 'vue.config.js');
-  let vueConfig;
-  if (fs.existsSync(vueConfigLocation)) {
-    vueConfig = require(vueConfigLocation);
-  }
-
-  let options = {
+/**
+ * Defines the default settings object.
+ * Replaces the defaults if the user has defined the setting.
+ *
+ * @param  {object} vueConfigOptions The user's options.
+ * @return {object}                  The options object.
+ */
+function applySettings (vueConfigOptions) {
+  // Default settings
+  let defaultSettings = {
     removeDataTest: true,
     removeDataTestid: true,
     removeDataTestId: true,
@@ -33,6 +54,27 @@ function loadOptions () {
     }
   };
 
+  let options = defaultSettings;
+
+  options.pretty = vueConfigOptions.pretty || options.pretty;
+  options = booleanSettings(options, vueConfigOptions);
+
+  return options;
+}
+
+/**
+ * Loads the options from the vue.config.js file.
+ * If none are found, fallsback to default settings.
+ *
+ * @return {object}  An options object for what to remove and how to format the snapshot markup
+ */
+function loadOptions () {
+  const vueConfigLocation = path.join(process.cwd(), 'vue.config.js');
+  let vueConfig;
+  if (fs.existsSync(vueConfigLocation)) {
+    vueConfig = require(vueConfigLocation);
+  }
+
   let vueConfigOptions = {};
   if (vueConfig) {
     if (vueConfig.pluginOptions && vueConfig.pluginOptions.jestSerializer) {
@@ -44,19 +86,7 @@ function loadOptions () {
     }
   }
 
-  options.pretty = vueConfigOptions.pretty || options.pretty;
-  if (typeof(vueConfigOptions.removeDataTest) === 'boolean') {
-    options.removeDataTest = vueConfigOptions.removeDataTest;
-  }
-  if (typeof(vueConfigOptions.removeServerRendered) === 'boolean') {
-    options.removeServerRendered = vueConfigOptions.removeServerRendered;
-  }
-  if (typeof(vueConfigOptions.removeDataVId) === 'boolean') {
-    options.removeDataVId = vueConfigOptions.removeDataVId;
-  }
-  if (typeof(vueConfigOptions.stringifyObjects) === 'boolean') {
-    options.stringifyObjects = vueConfigOptions.stringifyObjects;
-  }
+  const options = applySettings(vueConfigOptions);
 
   return options;
 }
