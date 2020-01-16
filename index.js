@@ -46,7 +46,11 @@ function removeServerRenderedText (html, options) {
 }
 
 /**
- * This removes data-test="whatever" from your snapshots.
+ * This removes the following from your snapshots:
+ * data-test="whatever"
+ * data-testid="whatever"
+ * data-test-id="whatever"
+ * data-qa="whatever"
  *
  * If you also want to remove them from your production builds, see:
  * https://forum.vuejs.org/t/how-to-remove-attributes-from-tags-inside-vue-components/24138
@@ -65,6 +69,9 @@ function removeDataTestAttributes (html, options) {
   }
   if (!options || options.removeDataTestId) {
     html = html.replace(/ data-test-id="[-\w]+"/g, '');
+  }
+  if (options && options.removeDataQa) {
+    html = html.replace(/ data-qa="[-\w]+"/g, '');
   }
   return html;
 }
