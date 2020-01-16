@@ -12,6 +12,7 @@
     "remote": "git remote rm eddyerburgh && git remote"
   },
   "dependencies": {
+    "lodash.clonedeep": "^4.5.0",
     "pretty": "^2.0.0"
   },
   "devDependencies": {
