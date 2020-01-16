@@ -16,6 +16,9 @@ function loadOptions () {
 
   let options = {
     removeDataTest: true,
+    removeDataTestid: true,
+    removeDataTestId: true,
+    removeDataQa: false,
     removeServerRendered: true,
     removeDataVId: true,
     stringifyObjects: true,

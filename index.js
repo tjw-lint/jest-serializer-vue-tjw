@@ -61,12 +61,13 @@ function removeDataTestAttributes (html, options) {
     html = html.replace(/ data-test="[-\w]+"/g, '');
   }
   if (!options || options.removeDataTestid) {
-    html = html.replace(/ data-test="[-\w]+"/g, '');
+    html = html.replace(/ data-testid="[-\w]+"/g, '');
+  }
+  if (!options || options.removeDataTestId) {
+    html = html.replace(/ data-test-id="[-\w]+"/g, '');
   }
   return html;
 }
-
-
 
 /**
  * This removes data-v-1234abcd="" from your snapshots.
