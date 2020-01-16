@@ -1,5 +1,8 @@
 <template>
   <ul>
+    <li data-server-rendered="true">
+      data-server-rendered
+    </li>
     <li data-test="data-test">
       data-test
     </li>
