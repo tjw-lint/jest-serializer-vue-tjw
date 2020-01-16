@@ -34,7 +34,6 @@ function booleanSettings (options, vueConfigOptions) {
  * @return {object}                  The options object.
  */
 function applySettings (vueConfigOptions) {
-  // Default settings
   let defaultSettings = {
     removeDataTest: true,
     removeDataTestid: true,
