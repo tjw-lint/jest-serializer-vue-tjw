@@ -89,7 +89,7 @@ module.exports = {
 
 Setting              | Default           | Description
 :--                  | :--               | :--
-removeDataTest       | `true`            | Removes `data-test="whatever"` from your snapshots if true.
+removeDataTest       | `true`            | Removes `data-test="whatever"` from your snapshots if true. To also remove these from your production builds, [see here](https://forum.vuejs.org/t/how-to-remove-attributes-from-tags-inside-vue-components/24138).
 removeDataTestid     | `true`            | Removes `data-testid="whatever"` from your snapshots if true.
 removeDataTestId     | `true`            | Removes `data-test-id="whatever"` from your snapshots if true.
 removeDataQa         | `false`           | Removes `data-qa="whatever"` from your snapshots if true. `data-qa` is usually used by non-dev QA members. If they change in your snapshot, that indicates it may break someone else's E2E tests. So most using `data-qa` prefer they be left in by default.
