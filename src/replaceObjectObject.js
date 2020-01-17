@@ -20,10 +20,7 @@ function swapQuotes (str) {
  * @return {string}               stringified string
  */
 function stringify (obj) {
-  if (typeof(obj) === 'string') {
-    return obj;
-  }
-  if (typeof obj !== 'object' || Array.isArray(obj)) {
+  if (typeof(obj) !== 'object' || Array.isArray(obj)) {
     return JSON.stringify(obj);
   }
 
@@ -64,7 +61,12 @@ function convertVNodeDataAttributesToString (vnode) {
   if (vnode) {
     if (vnode.data && vnode.data.attrs) {
       for (const property in vnode.data.attrs) {
-        vnode.data.attrs[property] = swapQuotes(stringify(vnode.data.attrs[property]));
+        let value = vnode.data.attrs[property];
+        if (typeof(value) === 'string') {
+          vnode.data.attrs[property] = value;
+        } else {
+          vnode.data.attrs[property] = swapQuotes(stringify(value));
+        }
       }
     }
     if (vnode.children) {
