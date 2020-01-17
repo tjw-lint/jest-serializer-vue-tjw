@@ -42,7 +42,9 @@ function stringify (obj) {
  */
 function vnodeToString (vnode) {
   const vm = new Vue({
-    render: () => vnode
+    render: function () {
+      return vnode;
+    }
   });
   const html = vm.$mount().$el.outerHTML;
   vm.$destroy();
@@ -85,10 +87,9 @@ function replaceObjectObject (wrapper, options) {
     (!options || options.stringifyObjects) &&
     (wrapper && wrapper.vnode)
   ) {
-    let wrapperCopy = _cloneDeep(wrapper);
-    wrapperCopy.vnode = _cloneDeep(wrapper.vnode);
-    convertVNodeDataAttributesToString(wrapperCopy.vnode);
-    return vnodeToString(wrapperCopy.vnode);
+    let vnode = _cloneDeep(wrapper.vnode);
+    convertVNodeDataAttributesToString(vnode);
+    return vnodeToString(vnode);
   }
   return wrapper.html();
 }
