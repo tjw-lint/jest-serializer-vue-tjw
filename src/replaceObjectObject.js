@@ -20,6 +20,9 @@ function swapQuotes (str) {
  * @return {string}               stringified string
  */
 function stringify (obj) {
+  if (typeof(obj) === 'string') {
+    return obj;
+  }
   if (typeof obj !== 'object' || Array.isArray(obj)) {
     return JSON.stringify(obj);
   }
@@ -87,6 +90,7 @@ function replaceObjectObject (wrapper, options) {
     (!options || options.stringifyObjects) &&
     (wrapper && wrapper.vnode)
   ) {
+    // let vnode = wrapper.vnode;
     let vnode = _cloneDeep(wrapper.vnode);
     convertVNodeDataAttributesToString(vnode);
     return vnodeToString(vnode);
