@@ -91,6 +91,21 @@ function removeScopedStylesDataVIDAttributes (html, options) {
   return html;
 }
 
+/**
+ * This removes all HTML from your snapshots.
+ * <!----> <!-- \n asdf \n asdf -->
+ *
+ * @param  {string} html    The markup being serialized.
+ * @param  {object} options Options object for this serializer
+ * @return {string}         Modified HTML string
+ */
+function removeAllComments (html, options) {
+  if (options && options.removeComments) {
+    // [^>]* will match 0 or more of every character except >
+    return html.replace(/(?=<!--)([\s\S]*?)-->(\n)?/g, '');
+  }
+}
+
 module.exports = {
   /**
    * Test function for Jest's serializer API.
@@ -119,6 +134,7 @@ module.exports = {
     html = removeServerRenderedText(html, options);
     html = removeDataTestAttributes(html, options);
     html = removeScopedStylesDataVIDAttributes(html, options);
+    html = removeAllComments(html, options);
 
     return pretty(html, options.pretty);
   }
