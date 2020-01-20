@@ -67,14 +67,6 @@ In your `vue.config.js` file:
 module.exports = {
   pluginOptions: {
     jestSerializer: {
-      removeComments: false,
-      removeDataTest: true,
-      removeDataTestid: true,
-      removeDataTestId: true,
-      removeDataQa: false,
-      removeServerRendered: true,
-      removeDataVId: true,
-      stringifyObjects: false,
       // All available options: https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js
       pretty: {
         indent_char: ' ',
@@ -83,7 +75,15 @@ module.exports = {
         inline: [],
         sep: '\n',
         unformatted: ['code', 'pre']
-      }
+      },
+      removeComments: false,
+      removeDataTest: true,
+      removeDataTestid: true,
+      removeDataTestId: true,
+      removeDataQa: false,
+      removeDataVId: true,
+      removeServerRendered: true,
+      stringifyObjects: false
     }
   }
 };
@@ -91,15 +91,15 @@ module.exports = {
 
 Setting              | Default           | Description
 :--                  | :--               | :--
+pretty               | See above example | These options are passed into `pretty` to format the snapshot. To use `pretty`'s defaults pass in `true`. [See all available options here](https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js).
 removeComments       | `false`           | Removes all HTML comments from your snapshots. This is false be default, as sometimes these comments can infer important information about how your DOM was rendered. However, this is mostly just personal preference.
 removeDataTest       | `true`            | Removes `data-test="whatever"` from your snapshots if true. To also remove these from your production builds, [see here](https://forum.vuejs.org/t/how-to-remove-attributes-from-tags-inside-vue-components/24138).
 removeDataTestid     | `true`            | Removes `data-testid="whatever"` from your snapshots if true.
 removeDataTestId     | `true`            | Removes `data-test-id="whatever"` from your snapshots if true.
 removeDataQa         | `false`           | Removes `data-qa="whatever"` from your snapshots if true. `data-qa` is usually used by non-dev QA members. If they change in your snapshot, that indicates it may break someone else's E2E tests. So most using `data-qa` prefer they be left in by default.
-removeServerRendered | `true`            | Removes `data-server-rendered="true"` from your snapshots if true.
 removeDataVId        | `true`            | Removes `data-v-1234abcd=""` from your snapshots. Important if a 3rd-party component uses scoped styles, to prevent ID changes from breaking your `mount` based tests when updating a dependency.
+removeServerRendered | `true`            | Removes `data-server-rendered="true"` from your snapshots if true.
 stringifyObjects     | `false`           | **EXPERIMENTAL** Replaces `title="[object Object]"` with `title="{a:'asdf'}"` in your snapshots, allowing you to see the data in the snapshot. Requires you to pass in `wrapper`, not `wrapper.html()`. This is still a work in progress. On deeply nested componets, it may exceed callstack.
-pretty               | See above example | These options are passed into `pretty` to format the snapshot. To use `pretty`'s defaults pass in `true`. [See all available options here](https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js).
 
 
 ## Migrating from v2 to v3
