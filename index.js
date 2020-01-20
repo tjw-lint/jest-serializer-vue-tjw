@@ -92,8 +92,10 @@ function removeScopedStylesDataVIDAttributes (html, options) {
 }
 
 /**
- * This removes all HTML from your snapshots.
- * <!----> <!-- \n asdf \n asdf -->
+ * This removes all HTML comments from your snapshots.
+ * Normal <!---->
+ * Multi-line <!-- \n asdf \n asdf \n -->
+ * Containing HTML <!-- <div></div> -->
  *
  * @param  {string} html    The markup being serialized.
  * @param  {object} options Options object for this serializer
@@ -101,7 +103,8 @@ function removeScopedStylesDataVIDAttributes (html, options) {
  */
 function removeAllComments (html, options) {
   if (options && options.removeComments) {
-    // [^>]* will match 0 or more of every character except >
+    // The best Stackoverflow has to offer.
+    // Also removes a trailing newline if it exists.
     return html.replace(/(?=<!--)([\s\S]*?)-->(\n)?/g, '');
   }
 }
