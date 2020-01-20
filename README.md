@@ -125,6 +125,8 @@ stringifyObjects     | `false`           | **EXPERIMENTAL** Replaces `title="[ob
    * `data-test-id="whatever"`
 1. All `data-v-whatever=""` will be removed. These are attributes added by Vue to help scope styles. Removing them from your snapshots makes updating scoped dependencies easier.
 
+**Example:** These are the kind of diffs you can expect to see when migrating from v2 to v3.
+
 ```diff
  <div>
 -  <h1 data-test="pageTitle" data-test-id="pageTitle" data-testid="pageTitle">
@@ -140,6 +142,22 @@ stringifyObjects     | `false`           | **EXPERIMENTAL** Replaces `title="[ob
      <!-- There's an option you can turn on to remove all HTML comments too -->
      <!-- It's turned off by default, since they usually represent a v-if="false" -->
      <!-- and maybe you want to know about that. If not, set removeComments: true -->
+   </div>
+
+   <div>
+-    <h3 class="inline-block">Default formatting is improved</h3> <span><i class="fa fa-spinner"></i> <span class="sr-only">Loading...</span></span> <a><button type="button class="primary"><i class="fa fa-plus"></i>
++    <h3 class="inline-block">Default formatting is improved</h3>
++    <span>
++      <i class="fa fa-spinner"></i>
++      <span class="sr-only">Loading...</span>
++    </span>
++    <a>
++      <button type="button class="primary">
++        <i class="fa fa-plus"></i>
+         The formatting here is completely customizable (see API).
+-    </button></a>
++      </button>
++    </a>
    </div>
  </div>
 ```
