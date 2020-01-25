@@ -48,7 +48,7 @@
   },
   "homepage": "https://github.com/tjw-lint/jest-serializer-vue-tjw#readme",
   "directories": {
-    "test": "test"
+    "test": "tests"
   },
   "jest": {
     "moduleFileExtensions": [
