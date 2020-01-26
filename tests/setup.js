@@ -1,10 +1,8 @@
-const mockfs = require('mock-fs');
-
 global.beforeEach(() => {
+  jest.resetModules();
 });
 
 global.afterEach(() => {
-  mockfs.restore();
 });
 
 // Jest's setTimeout defaults to 5 seconds.

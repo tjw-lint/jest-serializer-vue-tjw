@@ -3,11 +3,11 @@ const helpers = require('./helpers.js');
 import { mount } from '@vue/test-utils';
 import ScopedStylesInDependency from './components/ScopedStylesInDependency.vue';
 
-
 describe('ScopedStylesInDependency.vue', () => {
-  test('Snapshot has data-v ids removed', () => {
+  test('Snapshot data-v ids removed', () => {
     helpers.mockSettings({
-      removeDataVId: true
+      removeDataVId: true,
+      removeComments: true
     });
 
     const wrapper = mount(ScopedStylesInDependency);
@@ -16,9 +16,10 @@ describe('ScopedStylesInDependency.vue', () => {
       .toMatchSnapshot();
   });
 
-  test('Snapshot has data-v ids remain', () => {
+  test('Snapshot data-v ids remain', () => {
     helpers.mockSettings({
-      removeDataVId: false
+      removeDataVId: false,
+      removeComments: true
     });
 
     const wrapper = mount(ScopedStylesInDependency);

@@ -140,10 +140,6 @@ module.exports = {
     html = removeScopedStylesDataVIDAttributes(html, options);
     html = removeAllComments(html, options);
 
-    if (options.testing) {
-      const mockfs = require('mock-fs');
-      mockfs.restore();
-    }
     return pretty(html, options.pretty);
   }
 };
