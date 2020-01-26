@@ -3,6 +3,7 @@
 module.exports = {
   pluginOptions: {
     jestSerializer: {
+      removeDataVId: false,
       removeComments: true,
       stringifyObjects: true
     }
