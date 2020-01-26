@@ -60,7 +60,7 @@
       "vue"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>/test/setup.js"
+      "<rootDir>/tests/setup.js"
     ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
