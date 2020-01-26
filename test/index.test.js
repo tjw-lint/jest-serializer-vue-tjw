@@ -45,5 +45,4 @@ describe('Index', () => {
     expect(index.print('<div data-test="a"><div><!----></div></div>'))
       .toMatchSnapshot();
   });
-
 });
