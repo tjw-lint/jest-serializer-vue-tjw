@@ -9,7 +9,7 @@ describe('DataTestIds.vue', () => {
 
     const wrapper = shallowMount(DataTestIds);
 
-    expect(wrapper.html())
+    expect(wrapper)
       .toMatchSnapshot();
   });
 
@@ -24,7 +24,7 @@ describe('DataTestIds.vue', () => {
 
     const wrapper = shallowMount(DataTestIds);
 
-    expect(wrapper.html())
+    expect(wrapper)
       .toMatchSnapshot();
   });
 
@@ -39,7 +39,7 @@ describe('DataTestIds.vue', () => {
 
     const wrapper = shallowMount(DataTestIds);
 
-    expect(wrapper.html())
+    expect(wrapper)
       .toMatchSnapshot();
   });
 
@@ -54,7 +54,7 @@ describe('DataTestIds.vue', () => {
 
     const wrapper = shallowMount(DataTestIds);
 
-    expect(wrapper.html())
+    expect(wrapper)
       .toMatchSnapshot();
   });
 
@@ -69,7 +69,7 @@ describe('DataTestIds.vue', () => {
 
     const wrapper = shallowMount(DataTestIds);
 
-    expect(wrapper.html())
+    expect(wrapper)
       .toMatchSnapshot();
   });
 
@@ -84,7 +84,7 @@ describe('DataTestIds.vue', () => {
 
     const wrapper = shallowMount(DataTestIds);
 
-    expect(wrapper.html())
+    expect(wrapper)
       .toMatchSnapshot();
   });
 });

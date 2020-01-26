@@ -5,7 +5,7 @@ describe('ListSpaced.vue', () => {
   test('Snapshot unchanged', () => {
     const wrapper = shallowMount(ListSpaced);
 
-    expect(wrapper.html())
+    expect(wrapper)
       .toMatchSnapshot();
   });
 });

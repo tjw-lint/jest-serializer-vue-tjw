@@ -9,7 +9,7 @@ describe('List.vue', () => {
       }
     });
 
-    expect(wrapper.html())
+    expect(wrapper)
       .toMatchSnapshot();
   });
 });
