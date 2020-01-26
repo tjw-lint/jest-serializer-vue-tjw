@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/nwutils/nw-utils-builder/badge.svg?branch=BRANCHNAME)](https://coveralls.io/github/nwutils/nw-utils-builder?branch=BRANCHNAME)
+[![Coverage Status](https://coveralls.io/repos/github/tjw-lint/jest-serializer-vue-tjw/badge.svg?branch=BRANCHNAME)](https://coveralls.io/github/tjw-lint/jest-serializer-vue-tjw?branch=BRANCHNAME)
 
 * [ ] Functionality
 * [ ] Tests
