@@ -15,11 +15,17 @@
     <li data-qa="data-qa">
       data-qa
     </li>
+    <li id="testId">
+      id="testId"
+    </li>
+    <li id="test-id">
+      id="test-id"
+    </li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'DataTestIds'
+  name: 'TestTokens'
 };
 </script>

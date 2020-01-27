@@ -59,7 +59,7 @@ function removeServerRenderedText (html, options) {
  * @param  {object} options  Options object for this serializer
  * @return {string}          Modified HTML string
  */
-function removeDataTestAttributes (html, options) {
+function removeTestTokens (html, options) {
   if (!options || options.removeDataTest) {
     // [-\w]+ will catch 1 or more instaces of a-z, A-Z, 0-9, hyphen (-), or underscore (_)
     html = html.replace(/ data-test="[-\w]+"/g, '');
@@ -72,6 +72,9 @@ function removeDataTestAttributes (html, options) {
   }
   if (options && options.removeDataQa) {
     html = html.replace(/ data-qa="[-\w]+"/g, '');
+  }
+  if (options && options.removeIdTest) {
+    html = html.replace(/ id="test[-\w]+"/g, '');
   }
   return html;
 }
@@ -136,7 +139,7 @@ module.exports = {
       html = replaceObjectObject(received, options) || '';
     }
     html = removeServerRenderedText(html, options);
-    html = removeDataTestAttributes(html, options);
+    html = removeTestTokens(html, options);
     html = removeScopedStylesDataVIDAttributes(html, options);
     html = removeAllComments(html, options);
 
