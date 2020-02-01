@@ -14,7 +14,7 @@
     "travis": "npm run lint && npm run coverage"
   },
   "ManifestComments": [
-    "Jest 25.1.0 breaks console output on windows. Pinning to 24.9.0. See jest issue #9459"
+    "Jest 25.1.0 is broken on Windows. Pinning to 24.9.0 until Jest issue #9459 is resolved."
   ],
   "dependencies": {
     "lodash.clonedeep": "^4.5.0",
