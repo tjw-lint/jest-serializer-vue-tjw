@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul id="tokens">
     <li data-server-rendered="true">
       data-server-rendered="true"
     </li>
@@ -14,6 +14,9 @@
     </li>
     <li data-qa="data-qa">
       data-qa="token"
+    </li>
+    <li id="test">
+      id="test"
     </li>
     <li id="testId">
       id="testId"
