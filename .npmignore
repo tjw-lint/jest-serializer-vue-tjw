@@ -1,5 +1,7 @@
 .git/
 node_modules/
+tests/
+coverage/
 sample/
 src/conversion/cli-api.txt
 src/**/*.test.js
