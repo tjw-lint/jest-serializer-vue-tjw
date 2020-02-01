@@ -1,4 +1,5 @@
 const pretty = require('pretty');
+const JSDOM = require('jsdom').JSDOM;
 
 const loadOptions = require('./src/loadOptions.js');
 const replaceObjectObject = require('./src/replaceObjectObject.js');
@@ -40,7 +41,14 @@ function isVueWrapper (received) {
  */
 function removeServerRenderedText (html, options) {
   if (!options || options.removeServerRendered) {
-    return html.replace(/ data-server-rendered="true"/g, '');
+    const dom = new JSDOM(html);
+
+    let elements = dom.window.document.querySelectorAll('[data-server-rendered]');
+    elements.forEach(function (element) {
+      element.removeAttribute('data-server-rendered');
+    });
+
+    return dom.window.document.body.innerHTML;
   }
   return html;
 }
@@ -60,22 +68,42 @@ function removeServerRenderedText (html, options) {
  * @return {string}          Modified HTML string
  */
 function removeTestTokens (html, options) {
+  const dom = new JSDOM(html);
+
   if (!options || options.removeDataTest) {
-    // [-\w]+ will catch 1 or more instaces of a-z, A-Z, 0-9, hyphen (-), or underscore (_)
-    html = html.replace(/ data-test="[-\w]+"/g, '');
+    let elements = dom.window.document.querySelectorAll('[data-test]');
+    elements.forEach(function (element) {
+      element.removeAttribute('data-test');
+    });
   }
   if (!options || options.removeDataTestid) {
-    html = html.replace(/ data-testid="[-\w]+"/g, '');
+    let elements = dom.window.document.querySelectorAll('[data-testid]');
+    elements.forEach(function (element) {
+      element.removeAttribute('data-testid');
+    });
   }
   if (!options || options.removeDataTestId) {
-    html = html.replace(/ data-test-id="[-\w]+"/g, '');
+    let elements = dom.window.document.querySelectorAll('[data-test-id]');
+    elements.forEach(function (element) {
+      element.removeAttribute('data-test-id');
+    });
   }
   if (options && options.removeDataQa) {
-    html = html.replace(/ data-qa="[-\w]+"/g, '');
+    let elements = dom.window.document.querySelectorAll('[data-qa]');
+    elements.forEach(function (element) {
+      element.removeAttribute('data-qa');
+    });
   }
   if (options && options.removeIdTest) {
-    html = html.replace(/ id="test[-\w]+"/g, '');
+    const elements = dom.window.document.querySelectorAll('[id]');
+    elements.forEach(function (element) {
+      if (element.attributes.id.value.startsWith('test')) {
+        element.removeAttribute('id');
+      }
+    });
   }
+
+  html = dom.window.document.body.innerHTML;
   return html;
 }
 

@@ -1,19 +1,19 @@
 <template>
   <ul>
     <li data-server-rendered="true">
-      data-server-rendered
+      data-server-rendered="true"
     </li>
     <li data-test="data-test">
-      data-test
+      data-test="token"
     </li>
     <li data-testid="data-testid">
-      data-testid
+      data-testid="token"
     </li>
     <li data-test-id="data-test-id">
-      data-test-id
+      data-test-id="token"
     </li>
     <li data-qa="data-qa">
-      data-qa
+      data-qa="token"
     </li>
     <li id="testId">
       id="testId"
