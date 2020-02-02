@@ -118,7 +118,7 @@ function removeTestTokens (html, options) {
         element.classList.remove(className);
       });
 
-      if (!element.classList.length) {
+      if (!element.classList.length && classesToRemove.length) {
         element.removeAttribute('class');
       }
     });

@@ -39,6 +39,9 @@
     <li class="test active">
       class="test active"
     </li>
+    <li :class="{ 'active': false }">
+      class=""
+    </li>
   </ul>
 </template>
 
