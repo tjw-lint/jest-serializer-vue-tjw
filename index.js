@@ -102,6 +102,27 @@ function removeTestTokens (html, options) {
       }
     });
   }
+  if (options && options.removeClassTest) {
+    const elements = dom.window.document.querySelectorAll('[class]');
+    elements.forEach(function (element) {
+      const classes = element.classList;
+      let classesToRemove = [];
+
+      classes.forEach(function (className) {
+        if (className.startsWith('test')) {
+          classesToRemove.push(className);
+        }
+      });
+
+      classesToRemove.forEach(function (className) {
+        element.classList.remove(className);
+      });
+
+      if (!element.classList.length) {
+        element.removeAttribute('class');
+      }
+    });
+  }
 
   html = dom.window.document.body.innerHTML;
   return html;
