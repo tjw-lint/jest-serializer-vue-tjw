@@ -114,10 +114,17 @@ function removeTestTokens (html, options) {
         }
       });
 
+      // If a element has 3 or more classes that need removed,
+      // then removing them in the above loop would mess up the index
+      // as we are looping, skipping classes. There is a test in place
+      // for that edge case. That's why we build a temp list of
+      // classes to remove and then loop over it.
       classesToRemove.forEach(function (className) {
         element.classList.remove(className);
       });
 
+      // Only remove the empty class attributes on elements that had test-classes.
+      // There is a test case for this.
       if (!element.classList.length && classesToRemove.length) {
         element.removeAttribute('class');
       }
