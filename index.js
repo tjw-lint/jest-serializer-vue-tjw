@@ -77,7 +77,7 @@ function removeScopedStylesDataVIDAttributes (html, options) {
 
     const dom = new JSDOM(html);
     dataVIds.forEach(function (attribute) {
-      let elements = dom.window.document.querySelectorAll(attribute);
+      let elements = dom.window.document.querySelectorAll('[' + attribute + ']');
       elements.forEach(function (element) {
         element.removeAttribute(attribute);
       });
