@@ -11,7 +11,7 @@
     "coverage": "jest --coverage --runInBand --coverageReporters=text-lcov | coveralls",
     "validate": "npm run lint && npm test",
     "remote": "git remote rm eddyerburgh && git remote",
-    "travis": "npm run lint && npm run coverage"
+    "travis": "npm run lint && npm run coverage && jest --runInBand"
   },
   "ManifestComments": [
     "Jest 25.1.0 is broken on Windows. Pinning to 24.9.0 until Jest issue #9459 is resolved."
