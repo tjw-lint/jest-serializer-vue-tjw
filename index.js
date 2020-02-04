@@ -133,10 +133,10 @@ module.exports = {
     if (isVueWrapper(received)) {
       html = replaceObjectObject(received, options) || '';
     }
-    html = removeServerRenderedText(html, options);
+    // html = removeServerRenderedText(html, options);
     html = removeTestTokens(html, options);
-    html = removeScopedStylesDataVIDAttributes(html, options);
-    html = removeAllComments(html, options);
+    // html = removeScopedStylesDataVIDAttributes(html, options);
+    // html = removeAllComments(html, options);
 
     return beautify(html, options.formatting);
   }
