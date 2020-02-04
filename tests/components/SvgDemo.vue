@@ -12,6 +12,21 @@
         stroke-width="6"
       ></path>
     </svg>
+
+    <svg
+      width="100%"
+      height="80px"
+      viewBox="0 0 400 400"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M 100 100 L 300 100 L 200 300 z"
+        fill="LightBlue"
+        stroke="Blue"
+        stroke-width="3"
+      />
+    </svg>
+    <!-- trailing comment -->
   </div>
 </template>
 
