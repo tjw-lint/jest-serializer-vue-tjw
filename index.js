@@ -1,7 +1,7 @@
 const beautify = require('js-beautify').html;
 const fs = require('fs');
-const JSDOM = require('jsdom').JSDOM;
 
+const helpers = require('./src/helpers.js');
 const loadOptions = require('./src/loadOptions.js');
 const replaceObjectObject = require('./src/replaceObjectObject.js');
 const removeTestTokens = require('./src/removeTestTokens.js');
@@ -43,14 +43,11 @@ function isVueWrapper (received) {
  */
 function removeServerRenderedText (html, options) {
   if (!options || options.removeServerRendered) {
-    const dom = new JSDOM(html);
+    const $ = helpers.$(html);
 
-    let elements = dom.window.document.querySelectorAll('[data-server-rendered]');
-    elements.forEach(function (element) {
-      element.removeAttribute('data-server-rendered');
-    });
+    $('[data-server-rendered]').removeAttr('data-server-rendered');
 
-    return dom.window.document.body.innerHTML;
+    return $.html();
   }
   return html;
 }
@@ -76,15 +73,12 @@ function removeScopedStylesDataVIDAttributes (html, options) {
     // ['data-v-asdf', 'data-v-qwer']
     dataVIds = Array.from(new Set(dataVIds));
 
-    const dom = new JSDOM(html);
+    const $ = helpers.$(html);
     dataVIds.forEach(function (attribute) {
-      let elements = dom.window.document.querySelectorAll('[' + attribute + ']');
-      elements.forEach(function (element) {
-        element.removeAttribute(attribute);
-      });
+      $('[' + attribute + ']').removeAttr(attribute);
     });
 
-    html = dom.window.document.body.innerHTML;
+    html = $.html();
   }
   return html;
 }
@@ -133,10 +127,10 @@ module.exports = {
     if (isVueWrapper(received)) {
       html = replaceObjectObject(received, options) || '';
     }
-    // html = removeServerRenderedText(html, options);
+    html = removeServerRenderedText(html, options);
     html = removeTestTokens(html, options);
-    // html = removeScopedStylesDataVIDAttributes(html, options);
-    // html = removeAllComments(html, options);
+    html = removeScopedStylesDataVIDAttributes(html, options);
+    html = removeAllComments(html, options);
 
     return beautify(html, options.formatting);
   }

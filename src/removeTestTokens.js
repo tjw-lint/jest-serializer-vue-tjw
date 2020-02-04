@@ -1,5 +1,4 @@
-const cheerio = require('cheerio');
-const htmlparser2 = require('htmlparser2');
+const helpers = require('./helpers.js');
 
 /**
  * Removes any data-* attribute passed in.
@@ -42,7 +41,7 @@ function removeClassTest ($, options) {
         return css
           .split(' ')
           .filter(function (className) {
-            if (!className.toLowerCase().startsWith('test')) {
+            if (className.toLowerCase().startsWith('test')) {
               classesWereRemoved = true;
               return true;
             }
@@ -77,12 +76,7 @@ function removeClassTest ($, options) {
  * @return {string}          Modified HTML string
  */
 function removeTestTokens (html, options) {
-  const xmlOptions = {
-    decodeEntities: false,
-    xmlMode: false
-  };
-  const dom = htmlparser2.parseDOM(html, xmlOptions);
-  const $ = cheerio.load(dom, { xml: xmlOptions });
+  const $ = helpers.$(html);
 
   if (!options || options.removeDataTest) {
     removeDataAttribute($, 'test');
