@@ -9,8 +9,11 @@ const helpers = {
    * @return {object}       Cheerio object
    */
   $: function (html) {
+    // https://github.com/fb55/DomHandler
+    // https://github.com/fb55/htmlparser2/wiki/Parser-options
     const xmlOptions = {
       decodeEntities: false,
+      normalizeWhitespace: false,
       xmlMode: false
     };
     const dom = htmlparser2.parseDOM(html, xmlOptions);
