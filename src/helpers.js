@@ -13,7 +13,9 @@ const helpers = {
     // https://github.com/fb55/htmlparser2/wiki/Parser-options
     const xmlOptions = {
       decodeEntities: false,
+      lowerCaseAttributeNames: false,
       normalizeWhitespace: false,
+      recognizeSelfClosing: false,
       xmlMode: false
     };
     const dom = htmlparser2.parseDOM(html, xmlOptions);
