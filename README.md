@@ -132,6 +132,7 @@ stringifyObjects     | `false`           | **EXPERIMENTAL** Replaces `title="[ob
    * `data-testid="whatever" `
    * `data-test-id="whatever"`
 1. All `data-v-whatever=""` will be removed. These are attributes added by Vue to help scope styles. Removing them from your snapshots makes updating scoped dependencies easier.
+1. Any empty HTML attributes will be trimmed to remove the empty assignment. So `<div class="">` becomes `<div class>`.
 
 **Example:** These are the kind of diffs you can expect to see when migrating from v2 to v3.
 
