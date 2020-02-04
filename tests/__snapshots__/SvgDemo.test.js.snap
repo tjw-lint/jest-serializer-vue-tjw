@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SvgDemo.vue SVG renders properly 1`] = `
+<div>
+  <svg height="156">
+    <desc>Example Triangle</desc>
+    <path d="M 10,150 L 70,10 L 130,150 z" fill="#D5D8CB" stroke="#ECDCC6" stroke-width="6" />
+  </svg>
+</div>
+`;
