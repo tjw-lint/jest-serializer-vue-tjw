@@ -25,5 +25,3 @@ export default {
   name: 'Zoom'
 };
 </script>
-
-
