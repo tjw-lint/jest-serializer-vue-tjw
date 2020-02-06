@@ -8,12 +8,12 @@ Jest Vue snapshot serializer
 **Sections:**
 
 * [Features List](#features-list)
-  * Better Snapshots Demo
-* Usage/Installation/Migration Instructions
-  * Expected breaking changes for v2 to v3 migration
-  * Avoiding snpshot changes (not recommended)
-* API
-* FAQs & Testing Tips
+  * [Better Snapshots Demo](#what-do-you-mean-by-much-better-snapshot-defaults)
+* [Usage/Installation/Migration Instructions](#usage-and-migrating-from-v2-to-v3)
+  * [Expected breaking changes for v2 to v3 migration](#breaking-changes-to-expect-in-your-snapshots-during-migration)
+  * [Avoiding snpshot changes (not recommended)](#avoiding-breaking-changes-not-recommended)
+* [API](#api)
+* [FAQs & Testing Tips](#faqs--tips)
 
 
 ## Features list:
