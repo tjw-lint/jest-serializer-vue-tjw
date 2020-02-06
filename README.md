@@ -7,7 +7,7 @@ Jest Vue snapshot serializer
 
 **Sections:**
 
-* Features List
+* [Features List](#features-list)
   * Better Snapshots Demo
 * Usage/Installation/Migration Instructions
   * Expected breaking changes for v2 to v3 migration
