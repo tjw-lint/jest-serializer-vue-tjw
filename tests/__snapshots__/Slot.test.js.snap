@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slot.vue Slot with default text 1`] = `<button></button>`;
+
+exports[`Slot.vue Slot with markup 1`] = `
+<button>
+  <p>test</p>
+</button>
+`;
