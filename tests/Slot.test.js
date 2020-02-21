@@ -15,6 +15,11 @@ describe('Slot.vue', () => {
       }
     });
 
+    // TODO: There is a bug in VTU.
+    // This should be <button>test</button>
+    expect(wrapper.html())
+      .toEqual('<button></button>');
+
     expect(wrapper)
       .toMatchSnapshot();
   });
@@ -25,6 +30,10 @@ describe('Slot.vue', () => {
         default: '<p>test</p>'
       }
     });
+
+    // This is working as expected. Not affected by VTU bug.
+    expect(wrapper.html())
+      .toEqual('<button>\n  <p>test</p>\n</button>');
 
     expect(wrapper)
       .toMatchSnapshot();
