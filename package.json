@@ -36,7 +36,7 @@
     "eslint-plugin-vue": "^6.1.2",
     "jest": "24.9.0",
     "vue": "^2.6.11",
-    "vue-good-table": "^2.18.1",
+    "vue-good-table": "^2.19.0",
     "vue-jest": "^3.0.5",
     "vue-template-compiler": "^2.6.11"
   },
