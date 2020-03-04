@@ -1,9 +1,4 @@
 {
-  "moduleFileExtensions": [
-    "js",
-    "json",
-    "vue"
-  ],
   "setupFilesAfterEnv": [
     "<rootDir>/tests/setup.js"
   ],
