@@ -1,5 +1,12 @@
 {
+  "setupFilesAfterEnv": [
+    "./jest.setup.js"
+  ],
   "snapshotSerializers": [
     "<rootDir>/index.js"
-  ]
+  ],
+  "transform": {
+    ".*\\.(vue)$": "vue-jest",
+    "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+  }
 }
