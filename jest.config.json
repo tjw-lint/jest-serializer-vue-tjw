@@ -1,12 +1,17 @@
 {
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "vue"
+  ],
   "setupFilesAfterEnv": [
-    "./jest.setup.js"
+    "<rootDir>/tests/setup.js"
   ],
   "snapshotSerializers": [
     "<rootDir>/index.js"
   ],
   "transform": {
-    ".*\\.(vue)$": "vue-jest",
-    "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+    ".*\\.vue$": "vue-jest"
   }
 }
