@@ -2,6 +2,13 @@
 
 exports[`InputValue.vue Value shown in snapshot 1`] = `
 <div>
-  <input value="moo">
+  <input title="text" value="'There is a title attribute on this input'">
+  <input value="'There are no other attrubutes on this input'">
+  <input value="Native value with attribute" title="text">
+  <input value="Native value without attribute">
+  <input value="['moo']">
+  <input type="checkbox">
+  <input type="range" value="75">
+  <input value="{a:{c:true},b:{d:'text'}}">
 </div>
 `;

@@ -1,3 +1,28 @@
+const helpers = require('./helpers.js');
+
+/**
+ * Recursively loops over all vnodes and applies a value
+ * attribute if the element has a value
+ *
+ * @param {object} vnode A Vue Node
+ */
+function addVnodeValueAttribute (vnode) {
+  if (
+    vnode.data &&
+    vnode.data.domProps &&
+    vnode.data.domProps.hasOwnProperty('value')
+  ) {
+    let value = vnode.data.domProps.value;
+    vnode.data.attrs = vnode.data.attrs || {};
+    vnode.data.attrs.value = helpers.swapQuotes(helpers.stringify(value));
+  }
+  if (vnode.children) {
+    vnode.children.forEach(function (childVNode) {
+      addVnodeValueAttribute(childVNode);
+    });
+  }
+}
+
 /**
  * Adds in a value attribue for all input elements so the snapshot.
  * <input> => <input value="cow">
@@ -7,13 +32,12 @@
  * @return {object}          Modified vnode
  */
 function addInputValues (vnode, options) {
-  if (!options || options.addInputValues) {
-    // $('input').each(function (index, el) {
-    //   console.log(el.value);
-    //   $(el).attr('data-kitten', el.value);
-    // });
+  if (
+    (vnode && typeof(vnode) === 'object' && !Array.isArray(vnode)) &&
+    (!options || options.addInputValues)
+  ) {
+    addVnodeValueAttribute(vnode);
   }
-
   return vnode;
 }
 
