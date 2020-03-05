@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const helpers = require('./src/helpers.js');
 const loadOptions = require('./src/loadOptions.js');
+const addInputValues = require('./src/addInputValues.js');
 const replaceObjectObject = require('./src/replaceObjectObject.js');
 const removeTestTokens = require('./src/removeTestTokens.js');
 
@@ -102,32 +103,6 @@ function removeAllComments (html, options) {
   return html;
 }
 
-/**
- * Adds in a value attribue for all input elements so the snapshot
- *
- * @param  {string} html     The markup being serialized
- * @param  {object} options  Options object for this serializer
- * @return {string}          Modified HTML string
- */
-function addInputValues (html, options) {
-  if (!options || options.addInputValues) {
-    const $ = helpers.$(html);
-
-    // html was already a string at this point, so we don't have the value anymore. need to do this before turning it into a string
-    $('input').each(function (index, el) {
-      console.log(el.value);
-      $(el).attr('data-kitten', el.value);
-    });
-
-    html = $.html();
-    if ($('input').length) {
-      console.log(html);
-    }
-  }
-
-  return html;
-}
-
 module.exports = {
   /**
    * Test function for Jest's serializer API.
@@ -150,15 +125,26 @@ module.exports = {
     const options = loadOptions(fs);
 
     let html = received || '';
+
     if (isVueWrapper(received)) {
-      html = replaceObjectObject(received, options) || '';
+      const vnode = helpers.cloneVnode(received);
+      if (vnode) {
+        addInputValues(vnode, options);
+        replaceObjectObject(vnode, options);
+        html = helpers.vnodeToString(vnode) || '';
+      } else {
+        html = received.html();
+      }
     }
-    html = addInputValues(html, options);
+
+    // `html` is now a string, the following is all
+    // cheerio or regex string manipulation
     html = removeServerRenderedText(html, options);
     html = removeTestTokens(html, options);
     html = removeScopedStylesDataVIDAttributes(html, options);
     html = removeAllComments(html, options);
 
+    // Format markup
     return beautify(html, options.formatting);
   }
 };
