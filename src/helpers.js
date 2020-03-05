@@ -26,6 +26,39 @@ const helpers = {
   },
 
   /**
+   * Swaps single and double quotes
+   *
+   * @param  {string} str Input
+   * @return {string}     Swapped output
+   */
+  swapQuotes: function (str) {
+    return str.replace(/[\'\"]/g, function (match) {
+      return match === '"' ? '\'' : '"';
+    });
+  },
+
+  /**
+   * Same as JSON.stringify, but without quotes around object properties.
+   *
+   * @param  {object} obj data to stringify
+   * @return {string}               stringified string
+   */
+  stringify: function (obj) {
+    if (typeof(obj) !== 'object' || Array.isArray(obj)) {
+      return JSON.stringify(obj);
+    }
+
+    let props = Object
+      .keys(obj)
+      .map((key) => {
+        return key + ':' + this.stringify(obj[key]);
+      })
+      .join(',');
+
+    return '{' + props + '}';
+  },
+
+  /**
    * Creates a Vue instance to render the vnode as an HTML string.
    *
    * @param  {object} vnode  Vue's vnode object
