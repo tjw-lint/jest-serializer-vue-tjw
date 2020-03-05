@@ -102,6 +102,32 @@ function removeAllComments (html, options) {
   return html;
 }
 
+/**
+ * Adds in a value attribue for all input elements so the snapshot
+ *
+ * @param  {string} html     The markup being serialized
+ * @param  {object} options  Options object for this serializer
+ * @return {string}          Modified HTML string
+ */
+function addInputValues (html, options) {
+  if (!options || options.addInputValues) {
+    const $ = helpers.$(html);
+
+    // html was already a string at this point, so we don't have the value anymore. need to do this before turning it into a string
+    $('input').each(function (index, el) {
+      console.log(el.value);
+      $(el).attr('data-kitten', el.value);
+    });
+
+    html = $.html();
+    if ($('input').length) {
+      console.log(html);
+    }
+  }
+
+  return html;
+}
+
 module.exports = {
   /**
    * Test function for Jest's serializer API.
@@ -127,6 +153,7 @@ module.exports = {
     if (isVueWrapper(received)) {
       html = replaceObjectObject(received, options) || '';
     }
+    html = addInputValues(html, options);
     html = removeServerRenderedText(html, options);
     html = removeTestTokens(html, options);
     html = removeScopedStylesDataVIDAttributes(html, options);

@@ -5,7 +5,9 @@ import InputValue from './components/InputValue.vue';
 
 describe('InputValue.vue', () => {
   test('Value shown in snapshot', () => {
-    helpers.mockSettings({});
+    helpers.mockSettings({
+      addInputValues: true
+    });
 
     const wrapper = shallowMount(InputValue);
 

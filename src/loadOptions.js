@@ -9,6 +9,7 @@ const path = require('path');
  */
 function booleanSettings (options, vueConfigOptions) {
   const booleanSettings = [
+    'addInputValues',
     'removeClassTest',
     'removeComments',
     'removeDataTest',
@@ -37,6 +38,7 @@ function booleanSettings (options, vueConfigOptions) {
  */
 function applySettings (vueConfigOptions) {
   let defaultSettings = {
+    addInputValues: true,
     // To see available options: https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js
     formatting: {
       indent_char: ' ',
