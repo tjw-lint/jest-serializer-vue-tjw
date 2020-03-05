@@ -4,10 +4,13 @@
     <input v-model="noAttributes" />
     <input value="Native value with attribute" title="text" />
     <input value="Native value without attribute" />
+    <input value="Native checkbox" type="checkbox" />
     <input v-model="array" />
-    <input v-model="boolean" type="checkbox" />
+    <input v-model="booleanOff" />
+    <input v-model="booleanOn" />
     <input v-model.number="number" type="range" />
     <input v-model="object" />
+    <input v-model="string" type="checkbox" />
   </div>
 </template>
 
@@ -18,8 +21,9 @@ export default {
     return {
       hasAttributes: 'There is a title attribute on this input',
       noAttributes: 'There are no other attrubutes on this input',
-      array: ['moo'],
-      boolean: false,
+      array: ['text', 22],
+      booleanOff: false,
+      booleanOn: true,
       number: 75,
       object: {
         a: {
@@ -28,7 +32,8 @@ export default {
         b: {
           d: 'text'
         }
-      }
+      },
+      string: 'Text'
     };
   }
 };

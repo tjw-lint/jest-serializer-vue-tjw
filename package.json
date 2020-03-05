@@ -7,7 +7,7 @@
     "lint": "eslint --ext .js,.vue .",
     "fix": "npm run lint -- --fix",
     "test": "jest --runInBand --coverage",
-    "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand -t \"ObjectAttribute\"",
+    "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand -t \"Input\"",
     "coverage": "jest --coverage --runInBand --coverageReporters=text-lcov | coveralls",
     "validate": "npm run lint && npm test",
     "remote": "git remote rm eddyerburgh && git remote",

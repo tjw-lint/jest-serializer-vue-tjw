@@ -1,21 +1,33 @@
 const helpers = require('./helpers.js');
 
 /**
- * Recursively loops over all vnodes and applies a value
- * attribute if the element has a value
+ * Sets the attribute on element based on domProps.
  *
- * @param {object} vnode A Vue Node
+ * @param {object} vnode     A Vue node
+ * @param {string} attribute 'value' or 'checked'
  */
-function addVnodeValueAttribute (vnode) {
+function setAttribute (vnode, attribute) {
   if (
     vnode.data &&
     vnode.data.domProps &&
-    vnode.data.domProps.hasOwnProperty('value')
+    vnode.data.domProps.hasOwnProperty(attribute)
   ) {
-    let value = vnode.data.domProps.value;
+    let value = vnode.data.domProps[attribute];
     vnode.data.attrs = vnode.data.attrs || {};
-    vnode.data.attrs.value = helpers.swapQuotes(helpers.stringify(value));
+    vnode.data.attrs[attribute] = helpers.swapQuotes(helpers.stringify(value));
   }
+}
+
+/**
+ * Recursively loops over all vnodes and applies a value
+ * attribute if the element has a value
+ *
+ * @param {object} vnode A Vue node
+ */
+function addVnodeValueAttribute (vnode) {
+  setAttribute(vnode, 'value');
+  setAttribute(vnode, 'checked');
+
   if (vnode.children) {
     vnode.children.forEach(function (childVNode) {
       addVnodeValueAttribute(childVNode);

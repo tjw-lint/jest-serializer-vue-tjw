@@ -6,9 +6,12 @@ exports[`InputValue.vue Value shown in snapshot 1`] = `
   <input value="'There are no other attrubutes on this input'">
   <input value="Native value with attribute" title="text">
   <input value="Native value without attribute">
-  <input value="['moo']">
-  <input type="checkbox">
+  <input value="Native checkbox" type="checkbox">
+  <input value="['text',22]">
+  <input value="false">
+  <input value="true">
   <input type="range" value="75">
   <input value="{a:{c:true},b:{d:'text'}}">
+  <input type="checkbox" checked="Text">
 </div>
 `;
