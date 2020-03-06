@@ -14,7 +14,7 @@ function setAttribute (vnode, attribute) {
   ) {
     let value = vnode.data.domProps[attribute];
     vnode.data.attrs = vnode.data.attrs || {};
-    vnode.data.attrs[attribute] = helpers.swapQuotes(helpers.stringify(value));
+    vnode.data.attrs.value = helpers.swapQuotes(helpers.stringify(value));
   }
 }
 

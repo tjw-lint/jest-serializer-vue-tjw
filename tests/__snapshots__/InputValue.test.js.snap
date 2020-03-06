@@ -12,6 +12,6 @@ exports[`InputValue.vue Value shown in snapshot 1`] = `
   <input value="true">
   <input type="range" value="75">
   <input value="{a:{c:true},b:{d:'text'}}">
-  <input type="checkbox" checked="Text">
+  <input type="checkbox" value="'Text'">
 </div>
 `;
