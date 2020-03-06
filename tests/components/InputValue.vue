@@ -20,6 +20,8 @@
     <input v-model="object" />
     <input v-model="string" type="checkbox" />
     <input v-model="undefiner" />
+
+    <textarea v-model="textarea"></textarea>
   </div>
 </template>
 
@@ -50,6 +52,7 @@ export default {
       },
       string: 'Text',
       undefiner: undefined,
+      textarea: 'Text\nText',
     };
   }
 };
