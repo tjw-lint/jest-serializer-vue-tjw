@@ -18,6 +18,7 @@ exports[`InputValue.vue Value not shown in snapshot 1`] = `
   <input>
   <input type="range">
   <input>
+  <input>
   <input type="checkbox">
   <input>
   <textarea></textarea>
@@ -48,6 +49,7 @@ exports[`InputValue.vue Value shown in snapshot 1`] = `
   <input value="null">
   <input type="range" value="75">
   <input value="{a:{c:true},b:{d:'text'}}">
+  <input value="['a','b','c']">
   <input type="checkbox" value="'Text'">
   <input value="undefined">
   <textarea value="'Text\\nText'"></textarea>

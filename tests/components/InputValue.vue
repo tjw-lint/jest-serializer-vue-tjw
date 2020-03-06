@@ -18,6 +18,7 @@
     <input v-model="nuller" />
     <input v-model.number="number" type="range" />
     <input v-model="object" />
+    <input v-model="set" />
     <input v-model="string" type="checkbox" />
     <input v-model="undefiner" />
 
@@ -58,6 +59,7 @@ export default {
           d: 'text'
         }
       },
+      set: new Set(['a', 'b', 'b', 'c']),
       string: 'Text',
       undefiner: undefined,
       textarea: 'Text\nText',

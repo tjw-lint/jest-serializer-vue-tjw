@@ -59,6 +59,9 @@ const helpers = {
     if (obj === -Infinity) {
       return '-Infinity';
     }
+    if (obj instanceof Set) {
+      return JSON.stringify([...obj]);
+    }
     if (typeof(obj) === 'object' && typeof(obj.getTime) === 'function') {
       if (Number.isNaN(obj.getTime())) {
         return obj.toString(); // 'Invalid Date'
