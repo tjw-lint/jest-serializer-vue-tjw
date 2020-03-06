@@ -23,6 +23,10 @@ exports[`InputValue.vue Value not shown in snapshot 1`] = `
   <textarea></textarea>
   <input type="radio" value="cat">
   <input type="radio" value="dog">
+  <select>
+    <option value="carrot"></option>
+    <option value="celery"></option>
+  </select>
 </div>
 `;
 
@@ -49,5 +53,9 @@ exports[`InputValue.vue Value shown in snapshot 1`] = `
   <textarea value="'Text\\nText'"></textarea>
   <input type="radio" value="cat" v-model="'dog'">
   <input type="radio" value="dog" v-model="'dog'">
+  <select value="'celery'">
+    <option value="carrot"></option>
+    <option value="celery"></option>
+  </select>
 </div>
 `;
