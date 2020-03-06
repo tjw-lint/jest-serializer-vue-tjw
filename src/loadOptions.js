@@ -38,7 +38,7 @@ function booleanSettings (options, vueConfigOptions) {
  */
 function applySettings (vueConfigOptions) {
   let defaultSettings = {
-    addInputValues: true,
+    addInputValues: false,
     // To see available options: https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js
     formatting: {
       indent_char: ' ',
