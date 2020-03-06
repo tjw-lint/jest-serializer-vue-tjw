@@ -10,9 +10,16 @@ exports[`InputValue.vue Value not shown in snapshot 1`] = `
   <input>
   <input>
   <input>
+  <input type="date">
+  <input type="date">
+  <input>
+  <input>
+  <input>
+  <input>
   <input type="range">
   <input>
   <input type="checkbox">
+  <input>
 </div>
 `;
 
@@ -26,8 +33,15 @@ exports[`InputValue.vue Value shown in snapshot 1`] = `
   <input value="['text',22]">
   <input value="false">
   <input value="true">
+  <input type="date" value="1577836800000">
+  <input type="date" value="Invalid Date">
+  <input value="Infinity">
+  <input value="-Infinity">
+  <input value="NaN">
+  <input value="null">
   <input type="range" value="75">
   <input value="{a:{c:true},b:{d:'text'}}">
   <input type="checkbox" value="'Text'">
+  <input value="undefined">
 </div>
 `;

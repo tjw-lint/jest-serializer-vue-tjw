@@ -44,8 +44,30 @@ const helpers = {
    * @return {string}               stringified string
    */
   stringify: function (obj) {
+    if (obj === null) {
+      return 'null';
+    }
+    if (obj === undefined) {
+      return 'undefined';
+    }
+    if (Number.isNaN(obj)) {
+      return 'NaN';
+    }
+    if (obj === Infinity) {
+      return 'Infinity';
+    }
+    if (obj === -Infinity) {
+      return '-Infinity';
+    }
+    if (typeof(obj) === 'object' && typeof(obj.getTime) === 'function') {
+      if (Number.isNaN(obj.getTime())) {
+        return obj.toString(); // 'Invalid Date'
+      } else {
+        return obj.getTime() + ''; // '1583463154386'
+      }
+    }
     if (typeof(obj) !== 'object' || Array.isArray(obj)) {
-      return JSON.stringify(obj);
+      return JSON.stringify(obj) || '';
     }
 
     let props = Object

@@ -10,9 +10,16 @@
     <input v-model="array" />
     <input v-model="booleanOff" />
     <input v-model="booleanOn" />
+    <input v-model="date" type="date" />
+    <input v-model="invalidDate" type="date" />
+    <input v-model="infinity" />
+    <input v-model="negativeInfinity" />
+    <input v-model="nan" />
+    <input v-model="nuller" />
     <input v-model.number="number" type="range" />
     <input v-model="object" />
     <input v-model="string" type="checkbox" />
+    <input v-model="undefiner" />
   </div>
 </template>
 
@@ -26,6 +33,12 @@ export default {
       array: ['text', 22],
       booleanOff: false,
       booleanOn: true,
+      date: new Date('2020'),
+      invalidDate: new Date('asdf'),
+      infinity: Infinity,
+      negativeInfinity: -Infinity,
+      nan: NaN,
+      nuller: null,
       number: 75,
       object: {
         a: {
@@ -35,7 +48,8 @@ export default {
           d: 'text'
         }
       },
-      string: 'Text'
+      string: 'Text',
+      undefiner: undefined,
     };
   }
 };
