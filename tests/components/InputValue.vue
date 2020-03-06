@@ -1,10 +1,12 @@
 <template>
   <div>
-    <input v-model="hasAttributes" title="text" />
-    <input v-model="noAttributes" />
     <input value="Native value with attribute" title="text" />
     <input value="Native value without attribute" />
     <input value="Native checkbox" type="checkbox" />
+
+    <input v-model="hasAttributes" title="text" />
+    <input v-model="noAttributes" />
+
     <input v-model="array" />
     <input v-model="booleanOff" />
     <input v-model="booleanOn" />
