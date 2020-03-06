@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`InputValue.vue Value not shown in snapshot 1`] = `
+<div>
+  <input title="text">
+  <input>
+  <input value="Native value with attribute" title="text">
+  <input value="Native value without attribute">
+  <input value="Native checkbox" type="checkbox">
+  <input>
+  <input>
+  <input>
+  <input type="range">
+  <input>
+  <input type="checkbox">
+</div>
+`;
+
 exports[`InputValue.vue Value shown in snapshot 1`] = `
 <div>
   <input title="text" value="'There is a title attribute on this input'">

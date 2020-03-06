@@ -14,4 +14,15 @@ describe('InputValue.vue', () => {
     expect(wrapper)
       .toMatchSnapshot();
   });
+
+  test('Value not shown in snapshot', () => {
+    helpers.mockSettings({
+      addInputValues: false
+    });
+
+    const wrapper = shallowMount(InputValue);
+
+    expect(wrapper)
+      .toMatchSnapshot();
+  });
 });
