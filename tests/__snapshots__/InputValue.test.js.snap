@@ -21,6 +21,8 @@ exports[`InputValue.vue Value not shown in snapshot 1`] = `
   <input type="checkbox">
   <input>
   <textarea></textarea>
+  <input type="radio" value="cat">
+  <input type="radio" value="dog">
 </div>
 `;
 
@@ -45,5 +47,7 @@ exports[`InputValue.vue Value shown in snapshot 1`] = `
   <input type="checkbox" value="'Text'">
   <input value="undefined">
   <textarea value="'Text\\nText'"></textarea>
+  <input type="radio" value="cat" v-model="'dog'">
+  <input type="radio" value="dog" v-model="'dog'">
 </div>
 `;

@@ -22,6 +22,9 @@
     <input v-model="undefiner" />
 
     <textarea v-model="textarea"></textarea>
+
+    <input v-model="pet" type="radio" value="cat" />
+    <input v-model="pet" type="radio" value="dog" />
   </div>
 </template>
 
@@ -53,6 +56,7 @@ export default {
       string: 'Text',
       undefiner: undefined,
       textarea: 'Text\nText',
+      pet: 'dog',
     };
   }
 };
