@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <form>
     <input value="Native value with attribute" title="text" />
     <input value="Native value without attribute" />
     <input value="Native checkbox" type="checkbox" />
@@ -31,7 +31,7 @@
       <option v-text="Carrot" value="carrot"></option>
       <option v-text="Celery" value="celery"></option>
     </select>
-  </div>
+  </form>
 </template>
 
 <script>
