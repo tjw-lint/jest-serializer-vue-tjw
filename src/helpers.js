@@ -136,6 +136,7 @@ const helpers = {
         vnode = _cloneDeep(wrapper.vnode);
       } catch (err) {
         console.log(err);
+        vnode = undefined;
       }
       return vnode;
     }
