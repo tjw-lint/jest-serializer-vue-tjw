@@ -17,6 +17,7 @@ function booleanSettings (options, vueConfigOptions) {
     'removeDataQa',
     'removeDataVId',
     'removeIdTest',
+    'removeIdValues',
     'removeServerRendered',
     'stringifyObjects'
   ];
@@ -54,6 +55,7 @@ function applySettings (vueConfigOptions) {
     removeDataQa: false,
     removeDataVId: true,
     removeIdTest: false,
+    removeIdValues: false,
     removeServerRendered: true,
     stringifyObjects: false
   };

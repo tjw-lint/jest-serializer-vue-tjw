@@ -22,6 +22,7 @@ Object {
   "removeDataTestid": true,
   "removeDataVId": true,
   "removeIdTest": false,
+  "removeIdValues": false,
   "removeServerRendered": true,
   "stringifyObjects": false,
 }

@@ -175,6 +175,7 @@ module.exports = {
       removeDataQa: false,
       removeDataVId: false,
       removeIdTest: false,
+      removeIdValues: true,
       removeServerRendered: true,
       stringifyObjects: false
     }
@@ -210,6 +211,7 @@ module.exports = {
       removeDataQa: false,
       removeDataVId: true,
       removeIdTest: false,
+      removeIdValues: false,
       removeServerRendered: true,
       stringifyObjects: false
     }
@@ -228,6 +230,7 @@ removeDataTestId     | `true`            | Removes `data-test-id="whatever"` fro
 removeDataQa         | `false`           | Removes `data-qa="whatever"` from your snapshots if true. `data-qa` is usually used by non-dev QA members. If they change in your snapshot, that indicates it may break someone else's E2E tests. So most using `data-qa` prefer they be left in by default.
 removeDataVId        | `true`            | Removes `data-v-1234abcd=""` from your snapshots. Important if a 3rd-party component uses scoped styles, to prevent ID changes from breaking your `mount` based tests when updating a dependency.
 removeIdTest         | `false`           | Removes `id="test-whatever"` or `id="testWhatever"`from snapshots. **Warning:** You should never use ID's for test tokens, as they can also be used by JS and CSS, making them more brittle. Use `data-test-id` instead.
+removeIdValues         | `false`           | Removes values from `id="whatever"` from snapshots i.e. will become `id`. This can be useful when components generate different IDs for each test run.
 removeServerRendered | `true`            | Removes `data-server-rendered="true"` from your snapshots if true.
 stringifyObjects     | `false`           | **EXPERIMENTAL** Replaces `title="[object Object]"` with `title="{a:'asdf'}"` in your snapshots, allowing you to see the data in the snapshot. Requires you to pass in `wrapper`, not `wrapper.html()`. This is still a work in progress. On deeply nested componets, it may exceed callstack.
 

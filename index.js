@@ -5,6 +5,7 @@ const helpers = require('./src/helpers.js');
 const loadOptions = require('./src/loadOptions.js');
 const replaceObjectObject = require('./src/replaceObjectObject.js');
 const removeTestTokens = require('./src/removeTestTokens.js');
+const removeValues = require('./src/removeValues.js');
 
 /**
  * Determines if the passed in value is markup.
@@ -129,6 +130,7 @@ module.exports = {
     }
     html = removeServerRenderedText(html, options);
     html = removeTestTokens(html, options);
+    html = removeValues(html, options);
     html = removeScopedStylesDataVIDAttributes(html, options);
     html = removeAllComments(html, options);
 

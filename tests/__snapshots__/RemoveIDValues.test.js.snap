@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveIDValues ID values remain 1`] = `
+<div>
+  <span id="123">3</span>
+  <div>
+    <div id="234">
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RemoveIDValues ID values removed 1`] = `
+<div>
+  <span id>3</span>
+  <div>
+    <div id>
+    </div>
+  </div>
+</div>
+`;
