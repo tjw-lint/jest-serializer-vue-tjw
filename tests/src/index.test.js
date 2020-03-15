@@ -46,5 +46,3 @@ describe('Index', () => {
       .toMatchSnapshot();
   });
 });
-
-
