@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ObjectAttribute.vue Date mode 1`] = `
+<div>
+  <hr title="1577836800000">
+</div>
+`;
+
 exports[`ObjectAttribute.vue Does not mutate original component wrapper: 1 wrapper.html() 1`] = `
 <div title="[object Object]">
   <h1 title="asdf,qwer" class="active">
@@ -8,7 +14,6 @@ exports[`ObjectAttribute.vue Does not mutate original component wrapper: 1 wrapp
   <hr title="text,22">
   <hr>
   <hr title="true">
-  <hr title="Tue Dec 31 2019 19:00:00 GMT-0500 (Eastern Standard Time)">
   <hr title="Invalid Date">
   <hr title="Error: err">
   <hr title="Infinity">
@@ -34,7 +39,6 @@ exports[`ObjectAttribute.vue Does not mutate original component wrapper: 2 wrapp
   <hr title="['text',22]">
   <hr title="false">
   <hr title="true">
-  <hr title="1577836800000">
   <hr title="Invalid Date">
   <hr title="Error: err">
   <hr title="Infinity">
@@ -60,7 +64,6 @@ exports[`ObjectAttribute.vue Does not mutate original component wrapper: 3 wrapp
   <hr title="text,22">
   <hr>
   <hr title="true">
-  <hr title="Tue Dec 31 2019 19:00:00 GMT-0500 (Eastern Standard Time)">
   <hr title="Invalid Date">
   <hr title="Error: err">
   <hr title="Infinity">
@@ -86,7 +89,6 @@ exports[`ObjectAttribute.vue Does not mutate original component wrapper: 4 wrapp
   <hr title="['text',22]">
   <hr title="false">
   <hr title="true">
-  <hr title="1577836800000">
   <hr title="Invalid Date">
   <hr title="Error: err">
   <hr title="Infinity">

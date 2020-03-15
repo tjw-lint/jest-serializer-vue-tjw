@@ -5,9 +5,7 @@ import ObjectAttribute from './components/ObjectAttribute.vue';
 
 describe('ObjectAttribute.vue', () => {
   test('Does not mutate original component wrapper', () => {
-    helpers.mockSettings({
-      stringifyObjects: true
-    });
+    helpers.mockSettings({ stringifyObjects: true });
 
     const wrapper = shallowMount(ObjectAttribute);
 
@@ -28,5 +26,18 @@ describe('ObjectAttribute.vue', () => {
 
     expect(wrapper.find('[data-test="h1"]').element.title)
       .toEqual('asdf,qwer');
+  });
+
+  test('Date mode', () => {
+    helpers.mockSettings({ stringifyObjects: true });
+
+    const wrapper = shallowMount(ObjectAttribute, {
+      propsData: {
+        dateMode: true
+      }
+    });
+
+    expect(wrapper)
+      .toMatchSnapshot();
   });
 });

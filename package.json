@@ -6,12 +6,12 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue .",
     "fix": "npm run lint -- --fix",
-    "test": "cross-env TZ=America/New_York jest --runInBand --coverage",
+    "test": "jest --runInBand --coverage",
     "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand -t \"ObjectAttribute\"",
-    "coverage": "cross-env TZ=America/New_York jest --coverage --runInBand --coverageReporters=text-lcov | coveralls",
+    "coverage": "jest --coverage --runInBand --coverageReporters=text-lcov | coveralls",
     "validate": "npm run lint && npm test",
     "remote": "git remote rm eddyerburgh && git remote",
-    "travis": "npm run lint && npm run coverage && cross-env TZ=America/New_York jest --runInBand"
+    "travis": "npm run lint && npm run coverage && jest --runInBand"
   },
   "ManifestComments": [
     "Jest 25.1.0 is broken on Windows. Pinning to 24.9.0 until Jest issue #9459 is resolved."
@@ -28,7 +28,6 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^25.1.0",
     "coveralls": "^3.0.9",
-    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-tjw-base": "^1.0.0",
     "eslint-config-tjw-jest": "^1.0.0",
