@@ -75,7 +75,7 @@ function addVnodeValueAttribute (vnode) {
 function addInputValues (vnode, options) {
   if (
     (vnode && typeof(vnode) === 'object' && !Array.isArray(vnode)) &&
-    (!options || options.addInputValues)
+    (options && options.addInputValues)
   ) {
     addVnodeValueAttribute(vnode);
   }
