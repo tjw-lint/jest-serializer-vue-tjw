@@ -20,6 +20,7 @@
     <input v-model="object" />
     <input v-model="set" />
     <input v-model="string" type="checkbox" />
+    <input v-model="stringType" />
     <input v-model="undefiner" />
 
     <textarea v-model="textarea"></textarea>
@@ -61,6 +62,7 @@ export default {
       },
       set: new Set(['a', 'b', 'b', 'c']),
       string: 'Text',
+      stringType: String,
       undefiner: undefined,
       textarea: 'Text\nText',
       pet: 'dog',

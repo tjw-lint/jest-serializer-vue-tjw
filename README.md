@@ -212,7 +212,8 @@ module.exports = {
       removeIdTest: false,
       removeServerRendered: true,
       addInputValues: false,
-      stringifyObjects: false
+      stringifyObjects: false,
+      verbose: true
     }
   }
 };
@@ -230,6 +231,7 @@ removeDataQa         | `false`           | Removes `data-qa="whatever"` from you
 removeDataVId        | `true`            | Removes `data-v-1234abcd=""` from your snapshots. Important if a 3rd-party component uses scoped styles, to prevent ID changes from breaking your `mount` based tests when updating a dependency.
 removeIdTest         | `false`           | Removes `id="test-whatever"` or `id="testWhatever"`from snapshots. **Warning:** You should never use ID's for test tokens, as they can also be used by JS and CSS, making them more brittle. Use `data-test-id` instead.
 removeServerRendered | `true`            | Removes `data-server-rendered="true"` from your snapshots if true.
+verbose              | `true`            | Logs to the console errors or other messages if true. **Strongly recommended** if using experimental features.
 addInputValues       | `false`           | **EXPERIMENTAL** Displays the value of form fields. `<input>` becomes `<input value="whatever">` in your snapshots. Requires you pass in `wrapper`, not `wrapper.html()`. On deeply nested components, it may exceed callstack.
 stringifyObjects     | `false`           | **EXPERIMENTAL** Replaces `title="[object Object]"` with `title="{a:'asdf'}"` in your snapshots, allowing you to see the data in the snapshot. Requires you to pass in `wrapper`, not `wrapper.html()`. This is still a work in progress. On deeply nested componets, it may exceed callstack.
 

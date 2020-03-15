@@ -25,5 +25,6 @@ Object {
   "removeIdTest": false,
   "removeServerRendered": true,
   "stringifyObjects": false,
+  "verbose": true,
 }
 `;

@@ -1,9 +1,48 @@
-const _cloneDeep = require('lodash.clonedeep');
 const cheerio = require('cheerio');
 const htmlparser2 = require('htmlparser2');
 const Vue = require ('vue');
 
 const helpers = {
+  /**
+   * Console logs helper error messages if verbose mode is enabled.
+   *
+   * @param  {any}      message   What should be logged
+   * @param  {object}   options   Options object with the verbose option
+   */
+  log: function (message, options) {
+    if (message && options && options.verbose) {
+      console.log('Jest-Serializer-Vue-TJW:', message);
+    }
+  },
+
+  /**
+   * Determines if the passed in value is markup.
+   *
+   * @param  {string}  received  The markup to be serialized
+   * @return {boolean}           true = value is HTML
+   */
+  isHtmlString: function (received) {
+    return (
+      received &&
+      typeof(received) === 'string' &&
+      received.startsWith('<')
+    );
+  },
+
+  /**
+   * Determines if the passed in value is a Vue wrapper.
+   *
+   * @param  {object}  received  The Vue wrapper containing the markup to be serialized
+   * @return {boolean}           true = value is a Vue wrapper
+   */
+  isVueWrapper: function (received) {
+    return (
+      received &&
+      typeof(received) === 'object' &&
+      typeof(received.isVueInstance) === 'function'
+    );
+  },
+
   /**
    * Load the markup into Cheerio
    *
@@ -125,17 +164,19 @@ const helpers = {
    * We don't want to mutate the original object, because it may be
    * used again in the same test by another expect().
    *
-   * @param  {object} wrapper  A Vue-Test-Utils wrapper
-   * @return {object}          A copy of the wrapper.vnode
+   * @param  {object}   wrapper   A Vue-Test-Utils wrapper
+   * @param  {object}   options   The options object with verbose logging setting
+   * @param  {Function} cloneDeep Lodash clone module, or a mock for testing
+   * @return {object}             A copy of the wrapper.vnode
    */
-  cloneVnode: function (wrapper) {
+  cloneVnode: function (wrapper, options, cloneDeep) {
     if (wrapper && wrapper.vnode) {
       let vnode;
       try {
         // vnode = this.copyVnode(wrapper.vnode);
-        vnode = _cloneDeep(wrapper.vnode);
+        vnode = cloneDeep(wrapper.vnode);
       } catch (err) {
-        console.log(err);
+        this.log(err, options);
         vnode = undefined;
       }
       return vnode;

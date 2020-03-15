@@ -19,7 +19,8 @@ function booleanSettings (options, vueConfigOptions) {
     'removeDataVId',
     'removeIdTest',
     'removeServerRendered',
-    'stringifyObjects'
+    'stringifyObjects',
+    'verbose'
   ];
   booleanSettings.forEach(function (setting) {
     if (typeof(vueConfigOptions[setting]) === 'boolean') {
@@ -57,7 +58,8 @@ function applySettings (vueConfigOptions) {
     removeDataVId: true,
     removeIdTest: false,
     removeServerRendered: true,
-    stringifyObjects: false
+    stringifyObjects: false,
+    verbose: true
   };
 
   let options = defaultSettings;
