@@ -4,7 +4,7 @@ import { shallowMount } from '@vue/test-utils';
 import ObjectAttribute from './components/ObjectAttribute.vue';
 
 describe('ObjectAttribute.vue', () => {
-  test('Snapshots unchanged', () => {
+  test('Does not mutate original component wrapper', () => {
     helpers.mockSettings({
       stringifyObjects: true
     });
