@@ -37,7 +37,7 @@ function convertVNodeDataAttributesToString (vnode) {
 function replaceObjectObject (vnode, options) {
   if (
     (vnode && typeof(vnode) === 'object' && !Array.isArray(vnode)) &&
-    (!options || options.stringifyObjects)
+    (options && options.stringifyObjects)
   ) {
     convertVNodeDataAttributesToString(vnode);
     return vnode;
