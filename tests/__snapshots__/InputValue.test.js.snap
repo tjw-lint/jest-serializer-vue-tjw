@@ -10,6 +10,7 @@ exports[`InputValue.vue Value not shown in snapshot 1`] = `
   <input>
   <input>
   <input>
+  <input>
   <input type="date">
   <input type="date">
   <input>
@@ -20,6 +21,7 @@ exports[`InputValue.vue Value not shown in snapshot 1`] = `
   <input>
   <input>
   <input type="checkbox">
+  <input>
   <input>
   <input>
   <textarea></textarea>
@@ -42,6 +44,7 @@ exports[`InputValue.vue Value shown in snapshot 1`] = `
   <input value="['text',22]">
   <input value="false">
   <input value="true">
+  <input value="Error: err">
   <input type="date" value="1577836800000">
   <input type="date" value="Invalid Date">
   <input value="Infinity">
@@ -52,6 +55,7 @@ exports[`InputValue.vue Value shown in snapshot 1`] = `
   <input value="{a:{c:true},b:{d:'text'}}">
   <input value="['a','b','c']">
   <input type="checkbox" value="'Text'">
+  <input value="Function">
   <input value>
   <input value="undefined">
   <textarea value="'Text\\nText'"></textarea>

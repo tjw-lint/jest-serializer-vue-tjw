@@ -98,6 +98,9 @@ const helpers = {
     if (obj === -Infinity) {
       return '-Infinity';
     }
+    if (obj instanceof Error) {
+      return 'Error: ' + obj.message;
+    }
     if (obj instanceof Set) {
       return JSON.stringify([...obj]);
     }
@@ -107,6 +110,9 @@ const helpers = {
       } else {
         return obj.getTime() + ''; // '1583463154386'
       }
+    }
+    if (typeof(obj) === 'function') {
+      return 'Function';
     }
     if (typeof(obj) !== 'object' || Array.isArray(obj)) {
       return JSON.stringify(obj) || '';

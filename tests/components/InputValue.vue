@@ -10,6 +10,7 @@
     <input v-model="array" />
     <input v-model="booleanOff" />
     <input v-model="booleanOn" />
+    <input v-model="err" />
     <input v-model="date" type="date" />
     <input v-model="invalidDate" type="date" />
     <input v-model="infinity" />
@@ -21,6 +22,7 @@
     <input v-model="set" />
     <input v-model="string" type="checkbox" />
     <input v-model="stringType" />
+    <input v-model="symbolic" />
     <input v-model="undefiner" />
 
     <textarea v-model="textarea"></textarea>
@@ -47,6 +49,7 @@ export default {
       booleanOn: true,
       date: new Date('2020'),
       invalidDate: new Date('asdf'),
+      err: new Error('err'),
       infinity: Infinity,
       negativeInfinity: -Infinity,
       nan: NaN,
@@ -63,6 +66,7 @@ export default {
       set: new Set(['a', 'b', 'b', 'c']),
       string: 'Text',
       stringType: String,
+      symbolic: Symbol('a'),
       undefiner: undefined,
       textarea: 'Text\nText',
       pet: 'dog',
