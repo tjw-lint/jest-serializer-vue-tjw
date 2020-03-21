@@ -5,7 +5,7 @@ import AttributesToClear from './components/AttributesToClear.vue';
 
 describe('AttributesToClear.vue', () => {
   test('Default snapshot', () => {
-    helpers.mockSettings({});
+    helpers.mockSettings({ removeDataTest: false });
 
     const wrapper = shallowMount(AttributesToClear);
 
@@ -14,7 +14,10 @@ describe('AttributesToClear.vue', () => {
   });
 
   test('Just ID cleared', () => {
-    helpers.mockSettings({ attributesToClear: ['id'] });
+    helpers.mockSettings({
+      removeDataTest: false,
+      attributesToClear: ['id']
+    });
 
     const wrapper = shallowMount(AttributesToClear);
 
@@ -24,6 +27,7 @@ describe('AttributesToClear.vue', () => {
 
   test('All attributes cleared', () => {
     helpers.mockSettings({
+      removeDataTest: false,
       attributesToClear: [
         'id',
         'class',

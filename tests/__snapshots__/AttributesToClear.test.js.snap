@@ -8,7 +8,7 @@ exports[`AttributesToClear.vue All attributes cleared 1`] = `
   <h2 id asdf>
     mittens
   </h2>
-  <h3 id asdf>
+  <h3 id asdf data-test>
     scruffy
   </h3>
 </div>
@@ -22,7 +22,7 @@ exports[`AttributesToClear.vue Default snapshot 1`] = `
   <h2 id="kitten2" asdf="qwer">
     mittens
   </h2>
-  <h3 id asdf>
+  <h3 id asdf data-test="qwer">
     scruffy
   </h3>
 </div>
@@ -36,7 +36,7 @@ exports[`AttributesToClear.vue Just ID cleared 1`] = `
   <h2 id asdf="qwer">
     mittens
   </h2>
-  <h3 id asdf>
+  <h3 id asdf data-test="qwer">
     scruffy
   </h3>
 </div>
