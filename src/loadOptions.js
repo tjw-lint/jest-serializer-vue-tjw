@@ -85,6 +85,7 @@ function validateAttributesToClear (options, vueConfigOptions) {
 function applySettings (vueConfigOptions) {
   let defaultSettings = {
     addInputValues: false,
+    attributesToClear: [],
     // To see available options: https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js
     formatting: {
       indent_char: ' ',
@@ -94,7 +95,6 @@ function applySettings (vueConfigOptions) {
       sep: '\n',
       unformatted: ['code', 'pre']
     },
-    attributesToClear: [],
     removeClassTest: false,
     removeComments: false,
     removeDataTest: true,
