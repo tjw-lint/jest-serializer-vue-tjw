@@ -31,6 +31,51 @@ function booleanSettings (options, vueConfigOptions) {
 }
 
 /**
+ * Validates the formatting options is an object.
+ *
+ * @param  {object} options          The default options object to override if needed
+ * @param  {object} vueConfigOptions The user's settings
+ * @return {object}                  Modified options object
+ */
+function validateFormatting (options, vueConfigOptions) {
+  if (
+    vueConfigOptions.formatting &&
+    typeof(vueConfigOptions.formatting) === 'object' &&
+    !Array.isArray(vueConfigOptions.formatting)
+  ) {
+    options.formatting = vueConfigOptions.formatting;
+  }
+  return options;
+}
+
+/**
+ * Validates that the attributes to clear is an array of strings that do not
+ * contain spaces.
+ *
+ * @param  {object} options          The default options object to override if needed
+ * @param  {object} vueConfigOptions The user's settings
+ * @return {object}                  Modified options object
+ */
+function validateAttributesToClear (options, vueConfigOptions) {
+  if (
+    vueConfigOptions.attributesToClear &&
+    Array.isArray(vueConfigOptions.attributesToClear)
+  ) {
+    options.attributesToClear = [];
+    vueConfigOptions.attributesToClear.forEach(function (attribute) {
+      if (typeof(attribute) === 'string') {
+        attribute = attribute.trim();
+        if (!attribute.includes(' ')) {
+          options.attributesToClear.push(attribute);
+        }
+      }
+    });
+    options.attributesToClear = Array.from(new Set(options.attributesToClear));
+  }
+  return options;
+}
+
+/**
  * Defines the default settings object.
  * Replaces the defaults if the user has defined the setting.
  *
@@ -49,6 +94,7 @@ function applySettings (vueConfigOptions) {
       sep: '\n',
       unformatted: ['code', 'pre']
     },
+    attributesToClear: [],
     removeClassTest: false,
     removeComments: false,
     removeDataTest: true,
@@ -63,19 +109,9 @@ function applySettings (vueConfigOptions) {
   };
 
   let options = defaultSettings;
-
-  if (
-    vueConfigOptions.formatting &&
-    typeof(vueConfigOptions.formatting) === 'object' &&
-    !Array.isArray(vueConfigOptions.formatting)
-  ) {
-    options.formatting = vueConfigOptions.formatting;
-  } else {
-    options.formatting = defaultSettings.formatting;
-  }
-
+  options = validateFormatting(options, vueConfigOptions);
   options = booleanSettings(options, vueConfigOptions);
-
+  options = validateAttributesToClear(options, vueConfigOptions);
   return options;
 }
 
