@@ -4,7 +4,9 @@ const helpers = require('../helpers.js');
 const loadOptions = require('../../src/loadOptions.js');
 const vnodeManipulation = require('../../src/vnodeManipulation.js');
 
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
+
+const shallowMount = mount;
 
 describe('VnodeManipulation', () => {
   test('Deep clone fails', () => {

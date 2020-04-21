@@ -1,6 +1,6 @@
 const helpers = require('./helpers.js');
 
-import { mount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
 import ScopedStylesInDependency from './components/ScopedStylesInDependency.vue';
 
 describe('ScopedStylesInDependency.vue', () => {

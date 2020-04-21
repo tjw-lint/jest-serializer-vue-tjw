@@ -1,7 +1,9 @@
 const helpers = require('./helpers.js');
 
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
 import AllVNodeManipulations from './components/AllVNodeManipulations.vue';
+
+const shallowMount = mount;
 
 describe('AllVNodeManipulations.vue', () => {
   test('Attribute and input value shown', () => {

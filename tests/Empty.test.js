@@ -1,7 +1,9 @@
 const helpers = require('./helpers.js');
 
-import { mount, shallowMount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
 import Empty from './components/Empty.vue';
+
+const shallowMount = mount;
 
 describe('Empty.vue', () => {
   beforeEach(() => {
