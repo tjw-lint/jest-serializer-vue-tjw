@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.9.5",
-    "@vue/test-utils": "latest",
+    "@lmiller1990/vue-test-utils-next": "next",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.4.0",
@@ -36,7 +36,7 @@
     "eslint-plugin-jsdoc": "^24.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "jest": "24.9.0",
-    "vue-next": "latest",
+    "vue": "next",
     "vue-good-table": "^2.19.1",
     "vue-jest": "^3.0.5",
     "vue-template-compiler": "^2.6.11"
