@@ -39,7 +39,7 @@ const helpers = {
     return (
       received &&
       typeof(received) === 'object' &&
-      typeof(received.isVueInstance) === 'function'
+      typeof(received.html) === 'function'
     );
   },
 
