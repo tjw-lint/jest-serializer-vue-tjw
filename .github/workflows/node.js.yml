@@ -33,10 +33,15 @@ jobs:
 
     - run: npm ci
     - run: npm run lint
-    - run: npx jest --runInBand
+
+    - if: ${{ matrix.node-version == '8.3.0' ) )}}
+      run: npx jest
+
+    - if: ${{ startsWith( matrix.node-version, '10.' ) || startsWith( matrix.node-version, '12.' )}}
+      run: npx jest
 
     - if: ${{ startsWith( matrix.node-version, '14.' ) }}
-      run: npx jest --coverage --runInBand --coverageReporters=text-lcov
+      run: npx jest --coverage --coverageReporters=text-lcov
 
     - if: ${{ startsWith( matrix.node-version, '14.' ) }}
       name: Coveralls GitHub Action
