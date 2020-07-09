@@ -34,17 +34,15 @@ jobs:
     - run: npm ci
     - run: npm run lint
 
-    - if: ${{ matrix.node-version == '8.3.0' }}
-      run: npx jest
-
     - if: ${{ startsWith(matrix.node-version, '10.') || startsWith(matrix.node-version, '12.') }}
-      run: npx jest
+      run: npm t
 
     - if: ${{ startsWith(matrix.node-version, '14.') }}
-      run: npx jest --coverage --coverageReporters=text-lcov
+      run: npm t
 
     - if: ${{ startsWith(matrix.node-version, '14.') }}
       name: Coveralls GitHub Action
       uses: coverallsapp/github-action@v1.1.1
       with:
         github-token: ${{ secrets.github_token }}
+        path-to-lcov: ./coverage/lcov.info
