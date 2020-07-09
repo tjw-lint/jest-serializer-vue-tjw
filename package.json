@@ -8,10 +8,8 @@
     "fix": "npm run lint -- --fix",
     "test": "jest --runInBand --coverage",
     "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand -t \"ObjectAttribute\"",
-    "coverage": "jest --coverage --runInBand --coverageReporters=text-lcov | coveralls",
     "validate": "npm run lint && npm test",
-    "remote": "git remote rm eddyerburgh && git remote",
-    "travis": "npm run lint && npm run coverage && jest --runInBand"
+    "remote": "git remote rm eddyerburgh && git remote"
   },
   "ManifestComments": [
     "Pinned jest to 24.9.0. 25.1.0 is broken on Windows. Waiting for issue #9459 to be resolved."
