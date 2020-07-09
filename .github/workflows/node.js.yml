@@ -33,5 +33,12 @@ jobs:
 
     - run: npm ci
     - run: npm run lint
-    - run: npm run coverage
-    - run: jest --runInBand
+    - run: npx jest --coverage --runInBand --coverageReporters=text-lcov
+
+    - if: ${{ startsWith( matrix.node-version, '14.' ) }}
+      name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@v1.1.1
+      with:
+        # 
+        github-token: ${{ secrets.github_token }}
+        path-to-lcov: ./tests/coverage/lcov.info
