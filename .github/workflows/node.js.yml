@@ -26,6 +26,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - if: ${{ startsWith(matrix.node-version, '14.') }}
+      run: npm install -g npx
+
     # However Node 8.3.0 comes with npm 5.3.0.
     # npm 5.7.1 is the first version to support npm ci
     - if: ${{ matrix.node-version == '8.3.0' }}
@@ -38,7 +41,7 @@ jobs:
       run: npm t
 
     - if: ${{ startsWith(matrix.node-version, '14.') }}
-      run: npm install -g npx && npx jest --coverage --runInBand --coverageReporters=text-lcov | coveralls
+      run: npx jest --coverage --runInBand --coverageReporters=text-lcov | coveralls
 
     - if: ${{ startsWith(matrix.node-version, '14.') }}
       name: Coveralls GitHub Action
