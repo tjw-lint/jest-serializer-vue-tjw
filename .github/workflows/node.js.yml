@@ -38,7 +38,7 @@ jobs:
       run: npm t
 
     - if: ${{ startsWith(matrix.node-version, '14.') }}
-      run: npx jest --coverage --runInBand --coverageReporters=text-lcov | coveralls
+      run: npm run coverage
 
     - if: ${{ startsWith(matrix.node-version, '14.') }}
       name: Coveralls GitHub Action
