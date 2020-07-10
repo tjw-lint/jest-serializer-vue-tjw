@@ -8,7 +8,7 @@
     "fix": "npm run lint -- --fix",
     "test": "jest --runInBand --coverage",
     "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand -t \"ObjectAttribute\"",
-    "coverage": "jest --coverage --runInBand --coverageReporters=text-lcov | coveralls",
+    "coverage": "jest --coverage --runInBand --coverageReporters=text-lcov",
     "validate": "npm run lint && npm test",
     "remote": "git remote rm eddyerburgh && git remote"
   },
