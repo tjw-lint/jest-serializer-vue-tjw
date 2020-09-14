@@ -40,7 +40,7 @@
     "typescript": "^3.8.3",
     "vue": "next",
     "vue-good-table": "^2.19.1",
-    "vue-jest": "5.0.0-alpha.0"
+    "vue-jest": "next"
   },
   "repository": {
     "type": "git",
