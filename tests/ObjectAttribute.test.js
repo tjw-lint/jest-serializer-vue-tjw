@@ -1,7 +1,9 @@
 const helpers = require('./helpers.js');
 
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
 import ObjectAttribute from './components/ObjectAttribute.vue';
+
+const shallowMount = mount;
 
 describe('ObjectAttribute.vue', () => {
   test('Does not mutate original component wrapper', () => {

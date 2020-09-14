@@ -1,7 +1,9 @@
 const helpers = require('./helpers.js');
 
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
 import TestTokens from './components/TestTokens.vue';
+
+const shallowMount = mount;
 
 describe('TestTokens.vue', () => {
   test('Remove data-server-rendered, data-test, data-testid, data-test-id by default', () => {

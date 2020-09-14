@@ -1,7 +1,9 @@
 const helpers = require('./helpers.js');
 
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
 import AttributesToClear from './components/AttributesToClear.vue';
+
+const shallowMount = mount;
 
 describe('AttributesToClear.vue', () => {
   test('Default snapshot', () => {

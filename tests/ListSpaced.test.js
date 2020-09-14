@@ -1,7 +1,9 @@
 const helpers = require('./helpers.js');
 
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
 import ListSpaced from './components/ListSpaced.vue';
+
+const shallowMount = mount;
 
 describe('ListSpaced.vue', () => {
   test('Snapshot unchanged', () => {

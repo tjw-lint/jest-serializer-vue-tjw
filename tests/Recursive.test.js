@@ -1,6 +1,6 @@
 const helpers = require('./helpers.js');
 
-import { mount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
 import Recursive from './components/Recursive.vue';
 
 /*

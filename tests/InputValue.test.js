@@ -1,7 +1,9 @@
 const helpers = require('./helpers.js');
 
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@lmiller1990/vue-test-utils-next';
 import InputValue from './components/InputValue.vue';
+
+const shallowMount = mount;
 
 describe('InputValue.vue', () => {
   test('Value shown in snapshot', () => {
