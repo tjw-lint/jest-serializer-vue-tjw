@@ -35,6 +35,7 @@ const helpers = {
    * @param  {object}  received  The Vue wrapper containing the markup to be serialized
    * @return {boolean}           true = value is a Vue wrapper
    */
+  // This function may no longer work in Vue 3
   isVueWrapper: function (received) {
     return (
       received &&
@@ -140,6 +141,8 @@ const helpers = {
         return vnode;
       }
     });
+    // I'm assuming this won't work in Vue 3.
+    // We'll need a new way to convert a vnode to a string
     const html = vm.$mount().$el.outerHTML;
     vm.$destroy();
     return html;
