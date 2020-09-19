@@ -1,3 +1,6 @@
+/*
+THIS WAS INTENTIONALLY COMMENTED OUT TO SEE IF COVERALLS LOWERS TEST COVERAGE ON THE BRANCH PROPERLY
+
 const helpers = require('../../src/helpers.js');
 
 describe('Helpers', () => {
@@ -48,13 +51,11 @@ describe('Helpers', () => {
     });
   });
 
-  /*
-  THIS WAS INTENTIONALLY COMMENTED OUT TO SEE IF COVERALLS LOWERS TEST COVERAGE ON THE BRANCH PROPERLY
   describe('cloneVnode', () => {
     test('No vnode', () => {
       expect(helpers.cloneVnode({}, {}, jest.fn()))
         .toEqual(undefined);
     });
   });
-  */
 });
+*/
