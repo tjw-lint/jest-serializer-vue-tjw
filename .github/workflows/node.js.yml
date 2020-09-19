@@ -3,10 +3,6 @@
 
 name: Node.js CI
 
-env:
-  uses: rlespinasse/github-slug-action@v2.x
-  COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
-  COVERALLS_GIT_BRANCH: "${{ env.GITHUB_HEAD_REF_SLUG }}"
 
 on:
   push:
@@ -43,6 +39,9 @@ jobs:
       run: npm t
 
     - if: ${{ startsWith(matrix.node-version, '14.') }}
+      env:
+        COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
+        COVERALLS_GIT_BRANCH: "${{ github.ref }}"
       run: npm run coverage
 
     # - if: ${{ startsWith(matrix.node-version, '14.') }}
