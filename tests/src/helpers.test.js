@@ -48,10 +48,13 @@ describe('Helpers', () => {
     });
   });
 
+  /*
+  THIS WAS INTENTIONALLY COMMENTED OUT TO SEE IF COVERALLS LOWERS TEST COVERAGE ON THE BRANCH PROPERLY
   describe('cloneVnode', () => {
     test('No vnode', () => {
       expect(helpers.cloneVnode({}, {}, jest.fn()))
-        .toEqual('THIS WAS INTENTIONALLY BROKEN TO SEE IF COVERALLS LOWERS TEST COVERAGE ON THE BRANCH PROPERLY');
+        .toEqual(undefined);
     });
   });
+  */
 });
