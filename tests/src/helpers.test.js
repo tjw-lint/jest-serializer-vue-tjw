@@ -51,7 +51,7 @@ describe('Helpers', () => {
   describe('cloneVnode', () => {
     test('No vnode', () => {
       expect(helpers.cloneVnode({}, {}, jest.fn()))
-        .toEqual(undefined);
+        .toEqual('THIS WAS INTENTIONALLY BROKEN TO SEE IF COVERALLS LOWERS TEST COVERAGE ON THE BRANCH PROPERLY');
     });
   });
 });
