@@ -1,3 +1,8 @@
+test('Must contain at least one test', () => {
+  expect(1)
+    .toEqual(1);
+});
+
 /*
 THIS WAS INTENTIONALLY COMMENTED OUT TO SEE IF COVERALLS LOWERS TEST COVERAGE ON THE BRANCH PROPERLY
 
