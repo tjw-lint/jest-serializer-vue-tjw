@@ -34,4 +34,4 @@ jobs:
     - run: npm ci
     - run: npm run lint
     # - run: npm run coverage
-    - run: jest --runInBand
+    - run: npx jest --runInBand
