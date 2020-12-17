@@ -13,9 +13,7 @@
     "remote": "git remote rm eddyerburgh && git remote",
     "travis": "npm run lint && npm run coverage && jest --runInBand"
   },
-  "ManifestComments": [
-    "Pinned jest to 24.9.0. 25.1.0 is broken on Windows. Waiting for issue #9459 to be resolved."
-  ],
+  "ManifestComments": [],
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "htmlparser2": "^5.0.0",
@@ -35,7 +33,7 @@
     "eslint-config-tjw-vue": "^2.0.0",
     "eslint-plugin-jsdoc": "^30.6.5",
     "eslint-plugin-vue": "^7.0.1",
-    "jest": "24.9.0",
+    "jest": "^25.4.0",
     "vue": "^2.6.12",
     "vue-good-table": "^2.21.0",
     "vue-jest": "^3.0.7",
@@ -62,22 +60,5 @@
   "engines": {
     "node": ">=8.3.0",
     "npm": ">=5.0.0"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/tests/setup.js"
-    ],
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.vue$": "<rootDir>/node_modules/vue-jest"
-    },
-    "snapshotSerializers": [
-      "<rootDir>/index.js"
-    ]
   }
 }
