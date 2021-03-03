@@ -56,7 +56,7 @@ The following can all be adjusted in your `vue.config.js` settings.
 
 This is the before and after of using the default formatting options from v2, and the default formatting options in v3. You can now customize the formatting as well in v3 (See API).
 
-![Difference between the snapshot settings, my version makes the formatting cleaner and easier to see what actually changed in a failing snapshot](https://user-images.githubusercontent.com/4629794/53278405-f8685880-36d6-11e9-92f0-127e0673a23a.gif)
+![Difference between the snapshot settings, my version makes the formatting cleaner and easier to see what actually changed in a failing snapshot](https://user-images.githubusercontent.com/4629794/96301398-22b20c80-0fc5-11eb-8d71-195f56b556e0.gif)
 
 
 ## Usage and Migrating from v2 to v3
@@ -173,6 +173,7 @@ module.exports = {
       removeDataTestid: false,
       removeDataTestId: false,
       removeDataQa: false,
+      removeDataCy: false,
       removeDataVId: false,
       removeIdTest: false,
       removeIstanbulComments: false,
@@ -210,6 +211,7 @@ module.exports = {
       removeDataTestid: true,
       removeDataTestId: true,
       removeDataQa: false,
+      removeDataCy: false,
       removeDataVId: true,
       removeIdTest: false,
       removeIstanbulComments: true,
@@ -232,13 +234,14 @@ removeDataTest         | `true`            | Removes `data-test="whatever"` from
 removeDataTestid       | `true`            | Removes `data-testid="whatever"` from your snapshots if true.
 removeDataTestId       | `true`            | Removes `data-test-id="whatever"` from your snapshots if true.
 removeDataQa           | `false`           | Removes `data-qa="whatever"` from your snapshots if true. `data-qa` is usually used by non-dev QA members. If they change in your snapshot, that indicates it may break someone else's E2E tests. So most using `data-qa` prefer they be left in by default.
+removeDataCy           | `false`           | Removes `data-cy="whatever"` from your snapshots if true. `data-cy` is used by Cypress end-to-end tests. If they change in your snapshot, that indicates it may break an E2E tests. So most using `data-cy` prefer they be left in by default.
 removeDataVId          | `true`            | Removes `data-v-1234abcd=""` from your snapshots. Important if a 3rd-party component uses scoped styles, to prevent ID changes from breaking your `mount` based tests when updating a dependency.
 removeIdTest           | `false`           | Removes `id="test-whatever"` or `id="testWhatever"`from snapshots. **Warning:** You should never use ID's for test tokens, as they can also be used by JS and CSS, making them more brittle. Use `data-test-id` instead.
 removeIstanbulComments | `true`            | Removes `/* istanbul ignore next */ cov_1lmjj6lxv1.f[3]++;` comments from snapshots when functions are inside HTML attributes.
 removeServerRendered   | `true`            | Removes `data-server-rendered="true"` from your snapshots if true.
 verbose                | `true`            | Logs to the console errors or other messages if true. **Strongly recommended** if using experimental features.
 addInputValues         | `false`           | **EXPERIMENTAL** Displays the value of form fields. `<input>` becomes `<input value="whatever">` in your snapshots. Requires you pass in `wrapper`, not `wrapper.html()`. On deeply nested components, it may exceed callstack.
-stringifyObjects       | `false`           | **EXPERIMENTAL** Replaces `title="[object Object]"` with `title="{a:'asdf'}"` in your snapshots, allowing you to see the data in the snapshot. Requires you to pass in `wrapper`, not `wrapper.html()`. This is still a work in progress. On deeply nested componets, it may exceed callstack.
+stringifyObjects       | `false`           | **EXPERIMENTAL** Replaces `title="[object Object]"` with `title="{a:'asdf'}"` in your snapshots, allowing you to see the data in the snapshot. Requires you to pass in `wrapper`, not `wrapper.html()`. This is still a work in progress. On deeply nested components, it may exceed callstack.
 
 
 ## FAQs & tips
@@ -303,7 +306,7 @@ describe('YourComponent.vue', () => {
 });
 ```
 
-**How do I opt out of stringifyObjects or addInputValues for one test?** - This is actually much easier. These experimetnal features can only be done on a Vue VNode. So if you do `.html()` prior to sending it, it will always skip these transforms. This allows you to use these experimental feature more easily, while opting out of the more troublesome tests.
+**How do I opt out of stringifyObjects or addInputValues for one test?** - This is actually much easier. These experimetnal features can only be done on a Vue VNode. So if you do `.html()` prior to sending it, it will always skip these transforms. This allows you to use these experimental features more easily, while opting out of the more troublesome tests.
 
 ```js
 test('Assuming stringifyObjects is enabled', () => {
