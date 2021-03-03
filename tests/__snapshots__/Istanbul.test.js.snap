@@ -1,35 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Instanbul.vue Comment remains 1`] = `
-<div title="function () {
-        /* istanbul ignore next */
-        cov_1lmjj6lxv1.f[4]++;
-        cov_1lmjj6lxv1.s[16]++;
-        return true;
-      }">
-  <section>
-    <article class="alright">
-      <aside>
-        <h1 class="okay">okay</h1>
-        <fieldset>
-          <form>
-            <label for="text" stuff="function (x) {
-        /* istanbul ignore next */
-        cov_1lmjj6lxv1.f[5]++;
-        cov_1lmjj6lxv1.s[17]++;
-        return !x;
-      }">
-              Text
-            </label>
-            <input id="text" aria-label="text" aria-required="true" requried thing="function () { [native code] }">
-          </form>
-        </fieldset>
-      </aside>
-    </article>
-  </section>
-</div>
-`;
-
 exports[`Instanbul.vue Comment removed 1`] = `
 <div title="function () {
         return true;
