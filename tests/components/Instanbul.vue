@@ -1,5 +1,9 @@
 <template>
-  <div :title="function () { return true; }">
+  <div
+    :title="function () {
+      return true;
+    }"
+  >
     <section>
       <article class="alright">
         <aside>
@@ -8,7 +12,9 @@
             <form>
               <label
                 for="text"
-                :stuff="(x) => !x"
+                :stuff="(x) => {
+                  return !x;
+                }"
               >
                 Text
               </label>
