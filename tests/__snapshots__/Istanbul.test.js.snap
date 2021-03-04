@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Instanbul.vue Comment removed 1`] = `
+exports[`Istanbul.vue Comment removed 1`] = `
 <div title="function () {
         return true;
       }">

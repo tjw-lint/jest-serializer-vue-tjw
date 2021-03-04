@@ -1,14 +1,14 @@
 const helpers = require('./helpers.js');
 
 import { mount } from '@vue/test-utils';
-import Instanbul from './components/Instanbul.vue';
+import Istanbul from './components/Istanbul.vue';
 
-describe('Instanbul.vue', () => {
+describe('Istanbul.vue', () => {
   test('Comment removed', () => {
     helpers.mockSettings({
       removeIstanbulComments: true
     });
-    let wrapper = mount(Instanbul);
+    let wrapper = mount(Istanbul);
 
     expect(wrapper)
       .toMatchSnapshot();
