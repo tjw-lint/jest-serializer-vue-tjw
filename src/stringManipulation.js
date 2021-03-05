@@ -110,7 +110,8 @@ function clearInlineFunctions (html, options) {
     $('*').each(function (index, element) {
       Object.keys(element.attribs).forEach(function (attributeName) {
         let value = element.attribs[attributeName].trim();
-        if (value.startsWith('function') && value.endsWith('}')) {
+        let pattern = /function *\(([a-zA-Z0-9_$],* *){0,}\) *{(.*\n*)*}/;
+        if (pattern.test(value)) {
           element.attribs[attributeName] = '[function]';
         }
       });
