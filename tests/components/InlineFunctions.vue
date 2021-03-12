@@ -36,7 +36,7 @@ export default {
   props: {
     propFn: {
       type: Function,
-      default () {
+      default: function () {
         return () => ({});
       }
     }
