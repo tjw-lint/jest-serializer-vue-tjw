@@ -26,12 +26,21 @@
       Attribute does not end with }.
     </div>
     <p :title="[method, method]">In array</p>
+    <footer :title="propFn">Default function in in a prop</footer>
   </div>
 </template>
 
 <script>
 export default {
   name: 'InlineFunctions',
+  props: {
+    propFn: {
+      type: Function,
+      default () {
+        return () => ({});
+      }
+    }
+  },
   methods: {
     method: function () {
       return 2;
