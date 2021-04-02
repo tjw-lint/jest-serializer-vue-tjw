@@ -5,7 +5,7 @@ import AttributesToClear from './components/AttributesToClear.vue';
 
 describe('AttributesToClear.vue', () => {
   test('Default snapshot', () => {
-    helpers.mockSettings({ removeDataTest: false });
+    helpers.mockSettings({ removeDataTest: false, sortAttributes: true });
 
     const wrapper = shallowMount(AttributesToClear);
 

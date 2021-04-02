@@ -120,6 +120,23 @@ function removeIstanbulComments ($, options) {
   }
 }
 
+function sortAttributes ($, options) {
+  if (
+    options &&
+    options.sortAttributes
+  ) {
+    $('*').each(function (index, element) {
+      console.log(index, element.attribs);
+      Object.keys(element.attribs).sort().forEach(function (key) {
+        let value = element.attribs[key];
+        delete element.attribs[key];
+        element.attribs[key] = value;
+      });
+      console.log(index, element.attribs);
+    });
+  }
+}
+
 /**
  * Performs all string manipulations on the rendered DOM
  * prior to formatting. Using Cheerio for DOM manipulation.
@@ -139,6 +156,7 @@ function cheerioManipulation (html, options) {
   // clearInlineFunctions should always be ran before removeIstanbulComments for speed
   clearInlineFunctions($, options);
   removeIstanbulComments($, options);
+  sortAttributes($, options);
 
   return $.html();
 }
