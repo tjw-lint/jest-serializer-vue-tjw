@@ -112,7 +112,7 @@ function applySettings (vueConfigOptions) {
     removeIstanbulComments: true,
     removeServerRendered: true,
     sortAttributes: false,
-    stringifyObjects: false,
+    stringifyObjects: true,
     verbose: true
   };
 
