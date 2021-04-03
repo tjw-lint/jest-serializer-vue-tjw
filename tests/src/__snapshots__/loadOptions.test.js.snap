@@ -28,7 +28,7 @@ Object {
   "removeIdTest": false,
   "removeIstanbulComments": true,
   "removeServerRendered": true,
-  "sortAttributes": true,
+  "sortAttributes": false,
   "stringifyObjects": false,
   "verbose": true,
 }

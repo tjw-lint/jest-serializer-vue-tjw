@@ -135,13 +135,11 @@ function sortAttributes ($, options) {
     options.sortAttributes
   ) {
     $('*').each(function (index, element) {
-      console.log(index, element.attribs);
       Object.keys(element.attribs).sort().forEach(function (key) {
         let value = element.attribs[key];
         delete element.attribs[key];
         element.attribs[key] = value;
       });
-      console.log(index, element.attribs);
     });
   }
 }
