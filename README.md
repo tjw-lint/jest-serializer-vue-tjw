@@ -1,6 +1,6 @@
 # jest-serializer-vue-tjw
 
-[![Build Status](https://travis-ci.org/tjw-lint/jest-serializer-vue-tjw.svg?branch=master)](https://travis-ci.org/tjw-lint/jest-serializer-vue-tjw) [![Test Coverage](https://img.shields.io/coveralls/github/tjw-lint/jest-serializer-vue-tjw?label=Test%20Coverage&logo=jest)](https://coveralls.io/github/tjw-lint/jest-serializer-vue-tjw) [![Lint Coverage: 100%](https://img.shields.io/badge/Lint%20Coverage-100%25-brightgreen.svg?logo=eslint)](https://github.com/tjw-lint) [![Compatible with Node 8.3+](https://img.shields.io/badge/Node-%3E%3D8.3.0-brightgreen.svg?logo=Node.js)](/package.json) [![Code of Conduct: No Ideologies](https://img.shields.io/badge/CoC-No%20Ideologies-blue)](/CODE_OF_CONDUCT.md) [![MIT Licensed](https://img.shields.io/badge/License-MIT-brightgreen)](/LICENSE)
+[![Node.js CI](https://github.com/tjw-lint/jest-serializer-vue-tjw/actions/workflows/node.js.yml/badge.svg)](https://github.com/tjw-lint/jest-serializer-vue-tjw/actions/workflows/node.js.yml) [![Test Coverage](https://img.shields.io/coveralls/github/tjw-lint/jest-serializer-vue-tjw?label=Test%20Coverage&logo=jest)](https://coveralls.io/github/tjw-lint/jest-serializer-vue-tjw) [![Lint Coverage: 100%](https://img.shields.io/badge/Lint%20Coverage-100%25-brightgreen.svg?logo=eslint)](https://github.com/tjw-lint) [![Compatible with Node 8.3+](https://img.shields.io/badge/Node-%3E%3D8.3.0-brightgreen.svg?logo=Node.js)](/package.json) [![Code of Conduct: No Ideologies](https://img.shields.io/badge/CoC-No%20Ideologies-blue)](/CODE_OF_CONDUCT.md) [![MIT Licensed](https://img.shields.io/badge/License-MIT-brightgreen)](/LICENSE)
 
 
 Jest Vue snapshot serializer
@@ -47,6 +47,7 @@ The following can all be adjusted in your `vue.config.js` settings.
    * `data-qa="whatever"`
    * `id="testWhatever"`
    * `class="test-whatever"`
+1. Can clear out inline functions from snapshots, or keep them but remove Istanbul's auto-inserted comments.
 1. Has an experimental feature to display JSON data stored in HTML attributes instead of `href="[object Object]"`
 1. Has much better snapshot defaults.
 1. Lets you control your snapshot formatting with an API.
@@ -56,7 +57,7 @@ The following can all be adjusted in your `vue.config.js` settings.
 
 This is the before and after of using the default formatting options from v2, and the default formatting options in v3. You can now customize the formatting as well in v3 (See API).
 
-![Difference between the snapshot settings, my version makes the formatting cleaner and easier to see what actually changed in a failing snapshot](https://user-images.githubusercontent.com/4629794/53278405-f8685880-36d6-11e9-92f0-127e0673a23a.gif)
+![Difference between the snapshot settings, my version makes the formatting cleaner and easier to see what actually changed in a failing snapshot](https://user-images.githubusercontent.com/4629794/96301398-22b20c80-0fc5-11eb-8d71-195f56b556e0.gif)
 
 
 ## Usage and Migrating from v2 to v3
@@ -132,7 +133,7 @@ describe('MyComponent.vue', () => {
 +      <span class="sr-only">Loading...</span>
 +    </span>
 +    <a>
-+      <button type="button class="primary">
++      <button class="primary" type="button>
 +        <i class="fa fa-plus"></i>
          The formatting here is completely customizable (see API).
 -    </button></a>
@@ -159,6 +160,7 @@ Though all default settings are designed to be the best choice for most people, 
 module.exports = {
   pluginOptions: {
     jestSerializer: {
+      clearInlineFunctions: false,
       // All available options: https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js
       formatting: {
         unformatted: ['code', 'pre', 'em', 'strong', 'span'],
@@ -173,9 +175,12 @@ module.exports = {
       removeDataTestid: false,
       removeDataTestId: false,
       removeDataQa: false,
+      removeDataCy: false,
       removeDataVId: false,
       removeIdTest: false,
+      removeIstanbulComments: false,
       removeServerRendered: true,
+      sortAttributes: false,
       stringifyObjects: false
     }
   }
@@ -194,6 +199,7 @@ module.exports = {
   pluginOptions: {
     jestSerializer: {
       attributesToClear: [],
+      clearInlineFunctions: false,
       // All available formatting options: https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js
       formatting: {
         indent_char: ' ',
@@ -209,33 +215,41 @@ module.exports = {
       removeDataTestid: true,
       removeDataTestId: true,
       removeDataQa: false,
+      removeDataCy: false,
       removeDataVId: true,
       removeIdTest: false,
+      removeIstanbulComments: true,
       removeServerRendered: true,
+      sortAttributes: true,
+      verbose: true,
+      // Experimental features:
       addInputValues: false,
-      stringifyObjects: false,
-      verbose: true
+      stringifyObjects: false
     }
   }
 };
 ```
 
-Setting              | Default           | Description
-:--                  | :--               | :--
-attributesToClear    | []                | Takes an array of attribute strings, like `['title', 'id']`, to remove the values from these attributes. `<input title id class="stuff">`.
-formatting           | See above example | These options format the snapshot. [See all available options here](https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js).
-removeClassTest      | `false`           | Removes all CSS classes that start with "test", `class="test-whatever"`. **Warning:** Don't use this approach. Use `data-test` instead. It is better suited for this because it doesn't conflate CSS and test tokens.
-removeComments       | `false`           | Removes all HTML comments from your snapshots. This is false by default, as sometimes these comments can infer important information about how your DOM was rendered. However, this is mostly just personal preference.
-removeDataTest       | `true`            | Removes `data-test="whatever"` from your snapshots if true. To also remove these from your production builds, [see here](https://forum.vuejs.org/t/how-to-remove-attributes-from-tags-inside-vue-components/24138).
-removeDataTestid     | `true`            | Removes `data-testid="whatever"` from your snapshots if true.
-removeDataTestId     | `true`            | Removes `data-test-id="whatever"` from your snapshots if true.
-removeDataQa         | `false`           | Removes `data-qa="whatever"` from your snapshots if true. `data-qa` is usually used by non-dev QA members. If they change in your snapshot, that indicates it may break someone else's E2E tests. So most using `data-qa` prefer they be left in by default.
-removeDataVId        | `true`            | Removes `data-v-1234abcd=""` from your snapshots. Important if a 3rd-party component uses scoped styles, to prevent ID changes from breaking your `mount` based tests when updating a dependency.
-removeIdTest         | `false`           | Removes `id="test-whatever"` or `id="testWhatever"`from snapshots. **Warning:** You should never use ID's for test tokens, as they can also be used by JS and CSS, making them more brittle. Use `data-test-id` instead.
-removeServerRendered | `true`            | Removes `data-server-rendered="true"` from your snapshots if true.
-verbose              | `true`            | Logs to the console errors or other messages if true. **Strongly recommended** if using experimental features.
-addInputValues       | `false`           | **EXPERIMENTAL** Displays the value of form fields. `<input>` becomes `<input value="whatever">` in your snapshots. Requires you pass in `wrapper`, not `wrapper.html()`. On deeply nested components, it may exceed callstack.
-stringifyObjects     | `false`           | **EXPERIMENTAL** Replaces `title="[object Object]"` with `title="{a:'asdf'}"` in your snapshots, allowing you to see the data in the snapshot. Requires you to pass in `wrapper`, not `wrapper.html()`. This is still a work in progress. On deeply nested componets, it may exceed callstack.
+Setting                | Default           | Description
+:--                    | :--               | :--
+attributesToClear      | []                | Takes an array of attribute strings, like `['title', 'id']`, to remove the values from these attributes. `<input title id class="stuff">`.
+clearInlineFunctions   | `false`           | Replaces `<div title="function () { return true; }">` or this `<div title="(x) => !x">` with this placeholder `<div title="[function]">`.
+formatting             | See above example | These options format the snapshot. [See all available options here](https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js).
+removeClassTest        | `false`           | Removes all CSS classes that start with "test", `class="test-whatever"`. **Warning:** Don't use this approach. Use `data-test` instead. It is better suited for this because it doesn't conflate CSS and test tokens.
+removeComments         | `false`           | Removes all HTML comments from your snapshots. This is false by default, as sometimes these comments can infer important information about how your DOM was rendered. However, this is mostly just personal preference.
+removeDataTest         | `true`            | Removes `data-test="whatever"` from your snapshots if true. To also remove these from your production builds, [see here](https://forum.vuejs.org/t/how-to-remove-attributes-from-tags-inside-vue-components/24138).
+removeDataTestid       | `true`            | Removes `data-testid="whatever"` from your snapshots if true.
+removeDataTestId       | `true`            | Removes `data-test-id="whatever"` from your snapshots if true.
+removeDataQa           | `false`           | Removes `data-qa="whatever"` from your snapshots if true. `data-qa` is usually used by non-dev QA members. If they change in your snapshot, that indicates it may break someone else's E2E tests. So most using `data-qa` prefer they be left in by default.
+removeDataCy           | `false`           | Removes `data-cy="whatever"` from your snapshots if true. `data-cy` is used by Cypress end-to-end tests. If they change in your snapshot, that indicates it may break an E2E tests. So most using `data-cy` prefer they be left in by default.
+removeDataVId          | `true`            | Removes `data-v-1234abcd=""` from your snapshots. Important if a 3rd-party component uses scoped styles, to prevent ID changes from breaking your `mount` based tests when updating a dependency.
+removeIdTest           | `false`           | Removes `id="test-whatever"` or `id="testWhatever"`from snapshots. **Warning:** You should never use ID's for test tokens, as they can also be used by JS and CSS, making them more brittle. Use `data-test-id` instead.
+removeIstanbulComments | `true`            | Removes `/* istanbul ignore next */ cov_1lmjj6lxv1.f[3]++;` comments from snapshots when functions are inside HTML attributes. See [v3.16.0 release notes](https://github.com/tjw-lint/jest-serializer-vue-tjw/releases/tag/v3.16.0) for more details.
+removeServerRendered   | `true`            | Removes `data-server-rendered="true"` from your snapshots if true.
+sortAttributes         | `true`            | Sorts the attributes inside HTML elements in the snapshot. This helps make snapshot diffs easier to read.
+verbose                | `true`            | Logs to the console errors or other messages if true. **Strongly recommended** if using experimental features.
+addInputValues         | `false`           | **EXPERIMENTAL** Displays the value of form fields. `<input>` becomes `<input value="whatever">` in your snapshots. Requires you pass in `wrapper`, not `wrapper.html()`. On deeply nested components, it may exceed callstack.
+stringifyObjects       | `false`           | **EXPERIMENTAL** Replaces `title="[object Object]"` with `title="{a:'asdf'}"` in your snapshots, allowing you to see the data in the snapshot. Requires you to pass in `wrapper`, not `wrapper.html()`. This is still a work in progress. On deeply nested components, it may exceed callstack.
 
 
 ## FAQs & tips
@@ -300,7 +314,7 @@ describe('YourComponent.vue', () => {
 });
 ```
 
-**How do I opt out of stringifyObjects or addInputValues for one test?** - This is actually much easier. These experimetnal features can only be done on a Vue VNode. So if you do `.html()` prior to sending it, it will always skip these transforms. This allows you to use these experimental feature more easily, while opting out of the more troublesome tests.
+**How do I opt out of stringifyObjects or addInputValues for one test?** - This is actually much easier. These experimetnal features can only be done on a Vue VNode. So if you do `.html()` prior to sending it, it will always skip these transforms. This allows you to use these experimental features more easily, while opting out of the more troublesome tests.
 
 ```js
 test('Assuming stringifyObjects is enabled', () => {

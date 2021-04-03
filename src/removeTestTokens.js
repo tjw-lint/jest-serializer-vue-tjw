@@ -1,5 +1,3 @@
-const helpers = require('./helpers.js');
-
 /**
  * Removes any data-* attribute passed in.
  *
@@ -25,7 +23,6 @@ function removeIdTest ($, options) {
     });
   }
 }
-
 
 /**
  * Removes classes from elements where the class starts with `test`.
@@ -71,13 +68,10 @@ function removeClassTest ($, options) {
  * If you also want to remove them from your production builds, see:
  * https://forum.vuejs.org/t/how-to-remove-attributes-from-tags-inside-vue-components/24138
  *
- * @param  {string} html     The markup being serialized
+ * @param  {object} $        The markup as a cheerio object
  * @param  {object} options  Options object for this serializer
- * @return {string}          Modified HTML string
  */
-function removeTestTokens (html, options) {
-  const $ = helpers.$(html);
-
+function removeTestTokens ($, options) {
   if (!options || options.removeDataTest) {
     removeDataAttribute($, 'test');
   }
@@ -90,12 +84,12 @@ function removeTestTokens (html, options) {
   if (options && options.removeDataQa) {
     removeDataAttribute($, 'qa');
   }
+  if (options && options.removeDataCy) {
+    removeDataAttribute($, 'cy');
+  }
 
   removeIdTest($, options);
   removeClassTest($, options);
-
-  html = $.html();
-  return html;
 }
 
 module.exports = removeTestTokens;

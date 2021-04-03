@@ -10,15 +10,19 @@ const path = require('path');
 function booleanSettings (options, vueConfigOptions) {
   const booleanSettings = [
     'addInputValues',
+    'clearInlineFunctions',
     'removeClassTest',
     'removeComments',
     'removeDataTest',
     'removeDataTestid',
     'removeDataTestId',
     'removeDataQa',
+    'removeDataCy',
     'removeDataVId',
     'removeIdTest',
+    'removeIstanbulComments',
     'removeServerRendered',
+    'sortAttributes',
     'stringifyObjects',
     'verbose'
   ];
@@ -86,6 +90,7 @@ function applySettings (vueConfigOptions) {
   let defaultSettings = {
     addInputValues: false,
     attributesToClear: [],
+    clearInlineFunctions: false,
     // To see available options: https://github.com/beautify-web/js-beautify/blob/master/js/src/html/options.js
     formatting: {
       indent_char: ' ',
@@ -101,9 +106,12 @@ function applySettings (vueConfigOptions) {
     removeDataTestid: true,
     removeDataTestId: true,
     removeDataQa: false,
+    removeDataCy: false,
     removeDataVId: true,
     removeIdTest: false,
+    removeIstanbulComments: true,
     removeServerRendered: true,
+    sortAttributes: true,
     stringifyObjects: false,
     verbose: true
   };

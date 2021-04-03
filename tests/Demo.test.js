@@ -7,7 +7,7 @@ describe('Demo', () => {
     The above specific data-attrubutes are removed by default.
   </h1>
   <div>
-    <span class="active" data-qa="span" data-v-b3d95ac7="">
+    <span class="active" data-qa="span" data-cy="span" data-v-b3d95ac7="">
       These data-v ID's are removed too by default.
     </span>
     <!---->
@@ -16,7 +16,7 @@ describe('Demo', () => {
     <!-- and maybe you want to know about that. If not, set removeComments: true -->
   </div>
 
-  <div data-server-rendered="true">
+  <div data-server-rendered="true" :title="function () { return true; }">
     <h3 class="inline-block">Default formatting is improved</h3> <span><i class="fa fa-spinner"></i> <span class="sr-only">Loading...</span></span> <a><button type="button" class="primary"><i class="fa fa-plus"></i>
         The formatting here is completely customizable (see API).
     </button></a>
@@ -34,13 +34,17 @@ describe('Demo', () => {
   test('Inverted settings', () => {
     helpers.mockSettings({
       formatting: {},
+      clearInlineFunctions: true,
       removeComments: true,
       removeDataTest: false,
       removeDataTestid: false,
       removeDataTestId: false,
       removeDataQa: true,
+      removeDataCy: true,
       removeDataVId: false,
+      removeIstanbulComments: false,
       removeServerRendered: false,
+      sortAttributes: false,
       stringifyObjects: true
     });
 
@@ -50,6 +54,7 @@ describe('Demo', () => {
 
   test('v2.0.2 settings', () => {
     helpers.mockSettings({
+      clearInlineFunctions: false,
       formatting: {
         unformatted: ['code', 'pre', 'em', 'strong', 'span'],
         indent_inner_html: true,
@@ -63,9 +68,12 @@ describe('Demo', () => {
       removeDataTestid: false,
       removeDataTestId: false,
       removeDataQa: false,
+      removeDataCy: false,
       removeDataVId: false,
       removeIdTest: false,
+      removeIstanbulComments: false,
       removeServerRendered: true,
+      sortAttributes: false,
       stringifyObjects: false
     });
 
