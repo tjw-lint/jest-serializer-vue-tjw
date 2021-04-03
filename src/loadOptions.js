@@ -111,7 +111,7 @@ function applySettings (vueConfigOptions) {
     removeIdTest: false,
     removeIstanbulComments: true,
     removeServerRendered: true,
-    sortAttributes: false,
+    sortAttributes: true,
     stringifyObjects: false,
     verbose: true
   };
