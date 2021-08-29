@@ -34,7 +34,8 @@ jobs:
     - run: npm ci
 
     # ESLint 7+ uses `} catch {` which is not supported in Node 8
-    - if: ${{ matrix.node-version != '8.3.0' }}
+    # ESLint 7.32+ uses `arr.flat` which is not supported in Node 10
+    - if: ${{ matrix.node-version != '8.3.0' && matrix.node-version != '10.x' }}
       run: npm run lint
     # - run: npm run coverage
     - run: npm t
