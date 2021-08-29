@@ -8,7 +8,6 @@
     "fix": "npm run lint -- --fix",
     "test": "jest --runInBand --coverage",
     "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand -t \"ObjectAttribute\"",
-    "coverage": "jest --coverage --runInBand --coverageReporters=text-lcov | coveralls",
     "validate": "npm run lint && npm test",
     "remote": "git remote rm eddyerburgh && git remote",
     "travis": "npm run lint && npm run coverage && jest --runInBand"
@@ -30,7 +29,6 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "26.6.3",
-    "coveralls": "^3.1.1",
     "eslint": "^7.32.0",
     "eslint-config-tjw-base": "^1.0.0",
     "eslint-config-tjw-jest": "^1.0.0",
