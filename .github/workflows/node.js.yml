@@ -37,7 +37,7 @@ jobs:
     # ESLint 7.32+ uses `arr.flat` which is not supported in Node 10
     - if: ${{ matrix.node-version != '8.3.0' && matrix.node-version != '10.x' }}
       run: npm run lint
-    # - run: npm run coverage
+
     - run: npm t
 
     # main doesn't have a PR for comments so skip that branch
