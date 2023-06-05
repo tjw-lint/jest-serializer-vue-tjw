@@ -17,32 +17,25 @@ jobs:
     strategy:
       matrix:
         # This ensures we don't accidentally stop supporting our lowest supported Node version (8.3)
-        node-version: [8.3.0, 10.x, 12.x, 14.x, 16.x]
+        node-version: [16, 18, latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-
-    # However Node 8.3.0 comes with npm 5.3.0.
-    # npm 5.7.1 is the first version to support npm ci
-    - if: ${{ matrix.node-version == '8.3.0' }}
-      run: npm install -g npm@5.7.1
+        cache: npm
 
     - run: npm ci
 
-    # ESLint 7+ uses `} catch {` which is not supported in Node 8
-    # ESLint 7.32+ uses `arr.flat` which is not supported in Node 10
-    - if: ${{ matrix.node-version != '8.3.0' && matrix.node-version != '10.x' }}
-      run: npm run lint
+    - run: npm run lint
 
-    - run: npm t
+    - run: npm test
 
     # main doesn't have a PR for comments so skip that branch
     # We don't want 4 comments about code coverage, just just run it once on 8.3.0
-    - if: ${{ github.ref != 'refs/heads/main' && matrix.node-version == '8.3.0' }}
+    - if: ${{ github.ref != 'refs/heads/main' && matrix.node-version == 'latest' }}
       uses: romeovs/lcov-reporter-action@v0.2.21
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
