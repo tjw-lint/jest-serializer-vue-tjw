@@ -30,7 +30,7 @@ const helpers = {
     if (str.startsWith('function ') || str.startsWith('function(')) {
       return str.endsWith('}') && helpers.functionRegex.test(str);
     }
-  
+
     // Good enough to match most arrow functions
     return /^\s*\w+\s*=>/.test(str) || /^\s*\([^)]*\)\s*=>/.test(str);
   },
