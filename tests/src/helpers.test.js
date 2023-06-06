@@ -113,13 +113,13 @@ describe('Helpers', () => {
         '(arg, arg2) => {return;}',
         '(arg, arg2) => { return; }',
         '(arg, arg2) => { return true; }',
-        '(arg, arg2) => { return true;\n}',
+        '(arg, arg2) => { return true;\n}'
       ];
 
       // Non-english symbols
       matchers.push('function funkcjonować (spór, wywód) { return "powrót"; }');
 
-      let matched = matchers.filter(v => !isFunctionDeclaration(v));
+      let matched = matchers.filter((value) => !isFunctionDeclaration(value));
 
       if (matched.length) {
         console.log('The following should be matched by the Regex, but wasn\'t');
@@ -137,7 +137,7 @@ describe('Helpers', () => {
         'function (a word used in programming) is typically followed by curly braces, ie {}'
       ];
 
-      let matched = matchers.filter(v => isFunctionDeclaration(v));
+      let matched = matchers.filter((value) => isFunctionDeclaration(value));
 
       if (matched.length) {
         console.log('The following should NOT be matched by the Regex, but was');
