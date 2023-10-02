@@ -372,9 +372,9 @@ test('Assuming stringifyObjects is enabled', () => {
 ```
 
 
-## Using with Vite
+## Using with Vitest
 
-Vite actually uses the same snapshot library under the hood as Jest, so this library will work with it as well.
+Vitest actually uses the same snapshot library under the hood as Jest, so this library will work with it as well.
 
 1. `npm install --save-dev jest-serializer-vue-tjw`
 1. In your `/vite.config.js` file point to a setup file:
