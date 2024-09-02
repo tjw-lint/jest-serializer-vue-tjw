@@ -10,7 +10,7 @@
 import Recursive from './Recursive.vue';
 
 export default {
-  name: 'Recursive',
+  name: 'RecursiveComponent',
   components: {
     Recursive
   },

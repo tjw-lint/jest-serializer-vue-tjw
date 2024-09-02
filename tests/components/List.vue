@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'List',
+  name: 'ListComponent',
   props: {
     items: {
       type: Array,

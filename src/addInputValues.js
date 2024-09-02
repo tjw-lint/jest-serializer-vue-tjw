@@ -21,7 +21,10 @@ function setValue (vnode, attribute) {
     const directive = vnode.data.directives.find(function (directive) {
       return directive.rawName === 'v-model';
     });
-    if (directive && directive.hasOwnProperty('value')) {
+    if (
+      directive &&
+      Object.prototype.hasOwnProperty.call(directive, 'value')
+    ) {
       value = directive.value;
     }
   }
@@ -29,7 +32,7 @@ function setValue (vnode, attribute) {
   // should work on text, number, range, date, and textarea
   if (
     vnode.data.domProps &&
-    vnode.data.domProps.hasOwnProperty(attribute)
+    Object.prototype.hasOwnProperty.call(vnode.data.domProps, attribute)
   ) {
     value = vnode.data.domProps[attribute];
   }

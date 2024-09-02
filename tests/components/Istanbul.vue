@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'Istanbul',
+  name: 'IstanbulTest',
   methods: {
     random: function () {
       let number = Math.random() * 10;

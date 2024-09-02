@@ -141,7 +141,7 @@ const helpers = {
    * @return {string}     Swapped output
    */
   swapQuotes: function (str) {
-    return str.replace(/[\'\"]/g, function (match) {
+    return str.replace(/['"]/g, function (match) {
       return match === '"' ? '\'' : '"';
     });
   },

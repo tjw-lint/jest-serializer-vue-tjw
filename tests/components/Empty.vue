@@ -5,6 +5,6 @@
 
 <script>
 export default {
-  name: 'Empty'
+  name: 'EmptyComponent'
 };
 </script>

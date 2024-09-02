@@ -47,12 +47,12 @@ export default {
     return {
       first: {
         a: true,
-        b: 'Some \"text\"',
+        b: 'Some "text"',
         c: {
           d: {
             e: '23'
           },
-          f: '\"\'\"\''
+          f: '"\'"\''
         }
       },
       array: ['text', 22],

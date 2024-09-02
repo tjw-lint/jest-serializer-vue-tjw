@@ -22,6 +22,6 @@
 
 <script>
 export default {
-  name: 'Zoom'
+  name: 'MyZoom'
 };
 </script>

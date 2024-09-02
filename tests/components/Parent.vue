@@ -13,7 +13,7 @@
 import Child from './Child.vue';
 
 export default {
-  name: 'Parent',
+  name: 'ParentComponent',
   components: {
     Child
   }
