@@ -1,10 +1,11 @@
 {
   "name": "jest-serializer-vue-tjw",
+  "type": "module",
   "description": "A superb jest serializer for Vue snapshots",
   "version": "3.20.0",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --config=.eslintrc.js --ext .js,.vue .",
+    "lint": "eslint --config=.eslintrc.cjs --ext .js,.vue .",
     "fix": "npm run lint -- --fix",
     "test": "jest --runInBand --coverage",
     "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand -t \"ObjectAttribute\"",
@@ -72,6 +73,7 @@
   },
   "jest": {
     "moduleFileExtensions": [
+      "mjs",
       "js",
       "json",
       "vue"
