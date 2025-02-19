@@ -27,7 +27,8 @@ For existing projects follow the migration notes below, for new projects, you ca
 If you have a Vue 2 codebase you are transitioning to Vue 3, then `jest-serializer-vue-tjw` will still work with Vue 3. So stick with it until your conversion to Vue 3 is done. Once completely over to Vue 3 (or if you have a codebase that was always Vue 3), then you can can migrate to `vue3-snapshot-serializer`.
 
 1. Remove the old library
-   * `npm uninstall jest-serializer-vue-tjw` 
+   * `npm uninstall jest-serializer-vue-tjw`
+   * Delete any old code you have related to the old library (search for `jestSerializer` and `jest-serializer`)
 1. Add the new library
    * `npm install --save-dev vue3-snapshot-serializer`
 1. In your Vitest or Jest config, replace the snapshot serializer:
@@ -37,19 +38,31 @@ If you have a Vue 2 codebase you are transitioning to Vue 3, then `jest-serializ
    +  "./node_modules/vue3-snapshot-serializer/index.js"
     ]
    ```
-1. The new library uses the "diffable" formatter by default, this will give you very different snapshots. So to make the transition smoother, we also offer the "classic" formatter, which is the same used by the Vue 2 library.
-   * In your `setup.js` file (ran before each test file), in your global `beforeEach`, add set your global snapshot settings
+1. The new library uses the "diffable" formatter by default, this will give you very different snapshots. So to make the transition smoother, we also offer the "classic" formatter, which is the same used by `jest-serializer-vue-tjw`.
+   * In your `setup.js`, add to your global `beforeEach`, add set your global snapshot settings
      ```js
      global.beforeEach(() => {
+       // Set the default settings for each snapshot
        global.vueSnapshots = {
          formatter: 'classic',
          classicFormatting: {
-           // Pass in js-beautify.html settings here
+           // Pass in js-beautify.html settings here.
+           // The defaults for it match the defaults for jest-serializer-vue-tjw.
          }
        };
      });
      ```
-   * The API for `classicFormatting` is the same as the `formatting` options from the old library, full details are [documented here](https://github.com/tjw-lint/vue3-snapshot-serializer/blob/main/types.js#L19).
+   * The API for `classicFormatting` is the same as the `formatting` options for `jest-serializer-vue-tjw`. Full details are [documented here](https://github.com/tjw-lint/vue3-snapshot-serializer/blob/main/types.js#L19).
+   * There may still be some minor tweaks when going to the new library, but this is as close as you'll get to replicating the snapshots.
+1. Once migrated over, you can try removing the `formatter` and `classicFormatting` settings to use the new formatter which is much more customizable.
+   ```js
+   global.beforeEach(() => {
+     // Set the default settings for each snapshot
+     global.vueSnapshots = {
+       formatting: {}
+     };
+   });
+   ```
 
 
 * * *
