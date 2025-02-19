@@ -1,3 +1,81 @@
+# DEPRECATED
+
+
+## Use [vue3-snapshot-serializer](https://thejaredwilcurt.com/vue-snapshot-serializer/#api)
+
+This library was designed for Vue 2, Jest, and CJS (require). It can technically work with Vitest and Vue 3, but it wasn't designed for them.
+
+I wrote it, and I also wrote its replacement, which is designed for Vue 3, Vitest/Jest, and ESM (import).
+
+**If you are still on Vue 2, then you will not be able to use the new library** (it has code unique to the Vue 3 Virtual DOM).
+
+The new library **has all the same features** as this library, and comes with several new features as well:
+
+* Experimental Vue 2 features (`addInputValues`, `stringifyAttributes`) are no longer experimental and are enabled by default in the Vue 3 library.
+* Has an improved formatter designed for better diffing and readability, which is also completely customizable.
+* Can stub out the tag name, attributes, and innerHTML via CSS Selectors to reduce snapshot noise.
+* Tweaking snapshot settings on a per-test basis is now dramatically simpler.
+* The Vue 2 version only works with Vue-Test-Utils. Vue 3 will work with Vue-Test-Utils and @Testing-Library/Vue.
+
+For existing projects follow the migration notes below, for new projects, you can just following the "Getting Start" guide on the docs site of the new library:
+
+* https://TheJaredWilcurt.com/vue-snapshot-serializer
+
+
+## Migrating from jest-serializer-vue-tjw to vue3-snapshot-serializer
+
+If you have a Vue 2 codebase you are transitioning to Vue 3, then `jest-serializer-vue-tjw` will still work with Vue 3. So stick with it until your conversion to Vue 3 is done. Once completely over to Vue 3 (or if you have a codebase that was always Vue 3), then you can can migrate to `vue3-snapshot-serializer`.
+
+1. Remove the old library
+   * `npm uninstall jest-serializer-vue-tjw`
+   * Delete any old code you have related to the old library (search for `jestSerializer` and `jest-serializer`)
+1. Add the new library
+   * `npm install --save-dev vue3-snapshot-serializer`
+1. In your Vitest or Jest config, replace the snapshot serializer:
+   ```diff
+    "snapshotSerializers": [
+   -  "<rootDir>/node_modules/jest-serializer-vue-tjw"
+   +  "./node_modules/vue3-snapshot-serializer/index.js"
+    ]
+   ```
+1. The new library uses the "diffable" formatter by default, this will give you very different snapshots. So to make the transition smoother, we also offer the "classic" formatter, which is the same used by `jest-serializer-vue-tjw`.
+   * In your `setup.js`, add to your global `beforeEach`, add set your global snapshot settings
+     ```js
+     global.beforeEach(() => {
+       // Set the default settings for each snapshot
+       global.vueSnapshots = {
+         formatter: 'classic',
+         classicFormatting: {
+           // Pass in js-beautify.html settings here.
+           // The defaults for it match the defaults for jest-serializer-vue-tjw.
+         }
+       };
+     });
+     ```
+   * The API for `classicFormatting` is the same as the `formatting` options for `jest-serializer-vue-tjw`. Full details are [documented here](https://github.com/tjw-lint/vue3-snapshot-serializer/blob/main/types.js#L19).
+   * There may still be some minor tweaks when going to the new library, but this is as close as you'll get to replicating the snapshots.
+1. Once migrated over, you can try removing the `formatter` and `classicFormatting` settings to use the new formatter which is much more customizable.
+   ```js
+   global.beforeEach(() => {
+     // Set the default settings for each snapshot
+     global.vueSnapshots = {
+       formatting: {}
+     };
+   });
+   ```
+
+
+* * *
+
+
+# Old Documentation
+
+Everything below this point is the original documentation for this library.
+
+
+* * *
+
+
 # jest-serializer-vue-tjw
 
 [![Node.js CI](https://github.com/tjw-lint/jest-serializer-vue-tjw/actions/workflows/node.js.yml/badge.svg)](https://github.com/tjw-lint/jest-serializer-vue-tjw/actions/workflows/node.js.yml) [![Test Coverage: 100%](https://img.shields.io/badge/Test%20Coverage-100%25-brightgreen.svg?logo=jest)](https://github.com/tjw-lint/jest-serializer-vue-tjw/actions/workflows/node.js.yml) [![Lint Coverage: 100%](https://img.shields.io/badge/Lint%20Coverage-100%25-brightgreen.svg?logo=eslint)](https://github.com/tjw-lint) [![Compatible with Node 8.3+](https://img.shields.io/badge/Node-%3E%3D8.3.0-brightgreen.svg?logo=Node.js)](/package.json) [![Code of Conduct: No Ideologies](https://img.shields.io/badge/CoC-No%20Ideologies-blue)](/CODE_OF_CONDUCT.md) [![MIT Licensed](https://img.shields.io/badge/License-MIT-brightgreen)](/LICENSE)
