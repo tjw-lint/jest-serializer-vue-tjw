@@ -1,7 +1,7 @@
 # DEPRECATED
 
 
-## Use [vue3-snapshot-serializer](https://thejaredwilcurt.com/vue-snapshot-serializer/#api)
+## Upgrade to [vue3-snapshot-serializer](https://thejaredwilcurt.com/vue-snapshot-serializer/#api)
 
 This library was designed for Vue 2, Jest, and CJS (require). It can technically work with Vitest and Vue 3, but it wasn't designed for them.
 
