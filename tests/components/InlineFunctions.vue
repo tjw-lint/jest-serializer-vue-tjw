@@ -29,7 +29,7 @@
       Attribute does not end with }.
     </div>
     <p :title="[method, method]">In array</p>
-    <footer :title="propFn">Default function in in a prop</footer>
+    <footer :title="propFn">Default function in a prop</footer>
   </div>
 </template>
 

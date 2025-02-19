@@ -41,7 +41,7 @@ exports[`InlineFunctions.vue Functions kept 1`] = `
           return function () {
             return {};
           };
-        }">Default function in in a prop</footer>
+        }">Default function in a prop</footer>
 </div>
 `;
 
@@ -70,6 +70,6 @@ exports[`InlineFunctions.vue Functions removed 1`] = `
     Attribute does not end with }.
   </div>
   <p title="[function]">In array</p>
-  <footer title="[function]">Default function in in a prop</footer>
+  <footer title="[function]">Default function in a prop</footer>
 </div>
 `;
