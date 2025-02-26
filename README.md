@@ -20,36 +20,36 @@ For **existing projects** follow the migration notes below. For **new projects**
 
 ### Comparison
 
-.                      | jest-serializer-vue-tjw  | vue3-snapshot-serializer
-:--                    | :--                      | :--
-First release          | 2020-01-12               | 2024-09-06
-Made by                | TheJaredWilcurt          | TheJaredWilcurt
-Vue Support            | Vue 2 and 3 (mostly)     | Vue 3
-Test Runners           | Jest and Vitest (mostly) | Vitest and Jest
-Test Utils             | Vue-Test-Utils           | Vue-Test-Utils and @Testing-Library/vue
-Module type            | CJS (require)            | ESM (import)
-formatting             | Limited options          | Very detailed controls
-postProcessor          | ❌                       | ✅ *new feature*
-attributesToClear      | ✅                       | ✅
-clearInlineFunctions   | ✅                       | ✅
-removeClassTest        | ✅                       | ✅
-removeComments         | ✅                       | ✅
-removeDataTest         | ✅                       | ✅
-removeDataTestid       | ✅                       | ✅
-removeDataTestId       | ✅                       | ✅
-removeDataQa           | ✅                       | ✅
-removeDataCy           | ✅                       | ✅
-removeDataVId          | ✅                       | ✅
-removeIdTest           | ✅                       | ✅
-removeServerRendered   | ✅                       | ✅
-sortAttributes         | ✅                       | ✅
-sortClasses            | ❌                       | ✅ *new feature*
-verbose                | ✅                       | ✅
-debug mode             | ❌                       | ✅ *new feature*
-addInputValues         | Experimental (can crash) | ✅
-stringifyObjects       | Experimental (can crash) | ✅
-Stubbing out elements  | ❌                       | ✅ *new feature*
-removeIstanbulComments | ✅                       | Removed (problem no longer exists)
+Criteria                 | `jest-serializer-vue-tjw`  | `vue3-snapshot-serializer`
+--:                      | :--                        | :--
+First release            | 2020-01-12                 | 2024-09-06
+Made by                  | TheJaredWilcurt            | TheJaredWilcurt
+Vue Support              | Vue 2 and 3 (mostly)       | Vue 3
+Test Runners             | Jest and Vitest (mostly)   | Vitest and Jest
+Test Utils               | Vue-Test-Utils             | Vue-Test-Utils and @Testing-Library/vue
+Module type              | CJS (require)              | ESM (import)
+Formatting               | Limited options            | Very detailed controls
+Stubbing out elements    | ❌                         | ✅ *new feature*
+`postProcessor`          | ❌                         | ✅ *new feature*
+`attributesToClear`      | ✅                         | ✅
+`clearInlineFunctions`   | ✅                         | ✅
+`removeClassTest`        | ✅                         | ✅
+`removeComments`         | ✅                         | ✅
+`removeDataTest`         | ✅                         | ✅
+`removeDataTestid`       | ✅                         | ✅
+`removeDataTestId`       | ✅                         | ✅
+`removeDataQa`           | ✅                         | ✅
+`removeDataCy`           | ✅                         | ✅
+`removeDataVId`          | ✅                         | ✅
+`removeIdTest`           | ✅                         | ✅
+`removeIstanbulComments` | ✅                         | Removed (problem no longer exists)
+`removeServerRendered`   | ✅                         | ✅
+`sortAttributes`         | ✅                         | ✅
+`sortClasses`            | ❌                         | ✅ *new feature*
+`verbose`                | ✅                         | ✅
+`debug`                  | ❌                         | ✅ *new feature*
+`addInputValues`         | Experimental (can crash)   | ✅
+`stringifyObjects`       | Experimental (can crash)   | ✅
 
 
 ## Migrating from jest-serializer-vue-tjw to vue3-snapshot-serializer
