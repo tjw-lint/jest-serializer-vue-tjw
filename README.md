@@ -1,15 +1,13 @@
 # DEPRECATED
 
+`jest-serializer-vue-tjw` is now deprecated.
+
 
 ## Upgrade to [vue3-snapshot-serializer](https://thejaredwilcurt.com/vue-snapshot-serializer/#api)
 
-This library was designed for Vue 2, Jest, and CJS (require). It can technically work with Vitest and Vue 3, but it wasn't designed for them.
-
-I wrote it, and I also wrote its replacement, which is designed for Vue 3, Vitest/Jest, and ESM (import).
-
 **If you are still on Vue 2, then you will not be able to use the new library** (it has code unique to the Vue 3 Virtual DOM).
 
-The new library **has all the same features** as this library, and comes with several new features as well:
+The new library **has all the same features**, and comes with several new features as well:
 
 * Experimental Vue 2 features (`addInputValues`, `stringifyAttributes`) are no longer experimental and are enabled by default in the Vue 3 library.
 * Has an improved formatter designed for better diffing and readability, which is also completely customizable.
@@ -17,9 +15,41 @@ The new library **has all the same features** as this library, and comes with se
 * Tweaking snapshot settings on a per-test basis is now dramatically simpler.
 * The Vue 2 version only works with Vue-Test-Utils. Vue 3 will work with Vue-Test-Utils and @Testing-Library/Vue.
 
-For existing projects follow the migration notes below, for new projects, you can just following the "Getting Start" guide on the docs site of the new library:
+For **existing projects** follow the migration notes below. For **new projects**, you can just following the "[Getting Start](https://TheJaredWilcurt.com/vue-snapshot-serializer)" guide on the docs site of the new library.
 
-* https://TheJaredWilcurt.com/vue-snapshot-serializer
+
+### Comparison
+
+.                      | jest-serializer-vue-tjw  | vue3-snapshot-serializer
+:--                    | :--                      | :--
+First release          | 2020-01-12               | 2024-09-06
+Made by                | TheJaredWilcurt          | TheJaredWilcurt
+Vue Support            | Vue 2 and 3 (mostly)     | Vue 3
+Test Runners           | Jest and Vitest (mostly) | Vitest and Jest
+Test Utils             | Vue-Test-Utils           | Vue-Test-Utils and @Testing-Library/vue
+Module type            | CJS (require)            | ESM (import)
+formatting             | Limited options          | Very detailed controls
+postProcessor          | ❌                       | ✅ *new feature*
+attributesToClear      | ✅                       | ✅
+clearInlineFunctions   | ✅                       | ✅
+removeClassTest        | ✅                       | ✅
+removeComments         | ✅                       | ✅
+removeDataTest         | ✅                       | ✅
+removeDataTestid       | ✅                       | ✅
+removeDataTestId       | ✅                       | ✅
+removeDataQa           | ✅                       | ✅
+removeDataCy           | ✅                       | ✅
+removeDataVId          | ✅                       | ✅
+removeIdTest           | ✅                       | ✅
+removeServerRendered   | ✅                       | ✅
+sortAttributes         | ✅                       | ✅
+sortClasses            | ❌                       | ✅ *new feature*
+verbose                | ✅                       | ✅
+debug mode             | ❌                       | ✅ *new feature*
+addInputValues         | Experimental (can crash) | ✅
+stringifyObjects       | Experimental (can crash) | ✅
+Stubbing out elements  | ❌                       | ✅ *new feature*
+removeIstanbulComments | ✅                       | Removed (problem no longer exists)
 
 
 ## Migrating from jest-serializer-vue-tjw to vue3-snapshot-serializer
