@@ -20,36 +20,38 @@ For **existing projects** follow the migration notes below. For **new projects**
 
 ### Comparison
 
-Criteria                 | `jest-serializer-vue-tjw`  | `vue3-snapshot-serializer`
---:                      | :--                        | :--
-First release            | 2020-01-12                 | 2024-09-06
-Made by                  | TheJaredWilcurt            | TheJaredWilcurt
-Vue Support              | Vue 2 and 3 (mostly)       | Vue 3
-Test Runners             | Jest and Vitest (mostly)   | Vitest and Jest
-Test Utils               | Vue-Test-Utils             | Vue-Test-Utils and @Testing-Library/vue
-Module type              | CJS (require)              | ESM (import)
-Formatting               | Limited options            | Very detailed controls
-Stubbing out elements    | ❌                         | ✅ *new feature*
-`postProcessor`          | ❌                         | ✅ *new feature*
-`attributesToClear`      | ✅                         | ✅
-`clearInlineFunctions`   | ✅                         | ✅
-`removeClassTest`        | ✅                         | ✅
-`removeComments`         | ✅                         | ✅
-`removeDataTest`         | ✅                         | ✅
-`removeDataTestid`       | ✅                         | ✅
-`removeDataTestId`       | ✅                         | ✅
-`removeDataQa`           | ✅                         | ✅
-`removeDataCy`           | ✅                         | ✅
-`removeDataVId`          | ✅                         | ✅
-`removeIdTest`           | ✅                         | ✅
-`removeIstanbulComments` | ✅                         | Removed (problem no longer exists)
-`removeServerRendered`   | ✅                         | ✅
-`sortAttributes`         | ✅                         | ✅
-`sortClasses`            | ❌                         | ✅ *new feature*
-`verbose`                | ✅                         | ✅
-`debug`                  | ❌                         | ✅ *new feature*
-`addInputValues`         | Experimental (can crash)   | ✅
-`stringifyObjects`       | Experimental (can crash)   | ✅
+Criteria                 | `jest-serializer-vue-tjw`         | `vue3-snapshot-serializer`
+--:                      | :--                               | :--
+First release            | 2020-01-12                        | 2024-09-06
+Made by                  | TheJaredWilcurt                   | TheJaredWilcurt
+Vue Support              | Vue 2 and 3 (somewhat)            | Vue 3
+Test Runners             | Jest and Vitest (mostly)          | Vitest and Jest
+Test Utils               | Vue-Test-Utils                    | Vue-Test-Utils and @Testing-Library/Vue
+Module type              | CJS (require)                     | ESM (import)
+Settings stored in       | `vue.config.js` or `package.json` | The `global` or `globalThis` object
+Per-test settings        | Posisble, but very difficult      | Very easy
+Formatting               | Limited options                   | Very detailed controls
+Stubbing out elements    | ❌                                | ✅ *new feature*
+`postProcessor`          | ❌                                | ✅ *new feature*
+`addInputValues`         | Experimental (can crash)          | ✅
+`stringifyObjects`       | Experimental (can crash)          | ✅
+`attributesToClear`      | ✅                                | ✅
+`clearInlineFunctions`   | ✅                                | ✅
+`removeClassTest`        | ✅                                | ✅
+`removeComments`         | ✅                                | ✅
+`removeDataTest`         | ✅                                | ✅
+`removeDataTestid`       | ✅                                | ✅
+`removeDataTestId`       | ✅                                | ✅
+`removeDataQa`           | ✅                                | ✅
+`removeDataCy`           | ✅                                | ✅
+`removeDataVId`          | ✅                                | ✅
+`removeIdTest`           | ✅                                | ✅
+`removeIstanbulComments` | ✅                                | Removed (problem no longer exists)
+`removeServerRendered`   | ✅                                | ✅
+`sortAttributes`         | ✅                                | ✅
+`sortClasses`            | ❌                                | ✅ *new feature*
+`verbose`                | ✅                                | ✅
+`debug`                  | ❌                                | ✅ *new feature*
 
 
 ## Migrating from jest-serializer-vue-tjw to vue3-snapshot-serializer
@@ -77,14 +79,14 @@ If you have a Vue 2 codebase you are transitioning to Vue 3, then `jest-serializ
          formatter: 'classic',
          classicFormatting: {
            // Pass in js-beautify.html settings here.
-           // The defaults for it match the defaults for jest-serializer-vue-tjw.
+           // The defaults for this match the defaults for jest-serializer-vue-tjw.
          }
        };
      });
      ```
    * The API for `classicFormatting` is the same as the `formatting` options for `jest-serializer-vue-tjw`. Full details are [documented here](https://github.com/tjw-lint/vue3-snapshot-serializer/blob/main/types.js#L19).
    * There may still be some minor tweaks when going to the new library, but this is as close as you'll get to replicating the snapshots.
-1. Once migrated over, you can try removing the `formatter` and `classicFormatting` settings to use the new formatter which is much more customizable.
+1. Once migrated over, you can try removing the `formatter` and `classicFormatting` settings to use the new formatter which is much more customizable. This will require updating your snapshots again, expect major formatting changes to occur. Concult the [docs site](https://TheJaredWilcurt.com/vue-snapshot-serializer) for details on customzing snapshots.
    ```js
    global.beforeEach(() => {
      // Set the default settings for each snapshot
