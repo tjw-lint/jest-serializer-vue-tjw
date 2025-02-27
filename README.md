@@ -65,7 +65,7 @@ If you have a Vue 2 codebase you are transitioning to Vue 3, then `jest-serializ
     ]
    ```
 1. The new library uses the "diffable" formatter by default, this will give you very different snapshots. So to make the transition smoother, we also offer the "classic" formatter, which is the same one used by `jest-serializer-vue-tjw`.
-   * In your `setup.js` add the following to your global `beforeEach`:
+   * In your `setup.js` ([Vitest](https://vitest.dev/config/#setupfiles)/[Jest](https://jestjs.io/docs/configuration#setupfilesafterenv-array)) add the following to your global `beforeEach`:
      ```js
      global.beforeEach(() => {
        // Set the default settings for each snapshot
