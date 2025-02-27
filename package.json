@@ -80,5 +80,8 @@
     "snapshotSerializers": [
       "<rootDir>/index.js"
     ]
+  },
+  "volta": {
+    "node": "14.12.0"
   }
 }
