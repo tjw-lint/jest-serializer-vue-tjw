@@ -9,17 +9,6 @@
 
 The new library **has all the same features**, and comes with several new features as well:
 
-* Experimental Vue 2 features (`addInputValues`, `stringifyAttributes`) are no longer experimental and are enabled by default in the Vue 3 library.
-* Has an improved formatter designed for better diffing and readability, which is also completely customizable.
-* Can stub out the tag name, attributes, and innerHTML via CSS Selectors to reduce snapshot noise.
-* Tweaking snapshot settings on a per-test basis is now dramatically simpler.
-* The Vue 2 version only works with Vue-Test-Utils. Vue 3 will work with Vue-Test-Utils and @Testing-Library/Vue.
-
-For **existing projects** follow the migration notes below. For **new projects**, you can just following the "[Getting Start](https://TheJaredWilcurt.com/vue-snapshot-serializer)" guide on the docs site of the new library.
-
-
-### Comparison
-
 Criteria                 | `jest-serializer-vue-tjw`         | `vue3-snapshot-serializer`
 --:                      | :--                               | :--
 First release            | 2020-01-12                        | 2024-09-06
@@ -52,6 +41,11 @@ Stubbing out elements    | ❌                                | ✅ *new feature
 `sortClasses`            | ❌                                | ✅ *new feature*
 `verbose`                | ✅                                | ✅
 `debug`                  | ❌                                | ✅ *new feature*
+
+
+For **new projects**, you can just follow the "[Getting Started](https://TheJaredWilcurt.com/vue-snapshot-serializer)" guide on the docs site of the new library.
+
+For **existing projects** follow the migration notes below.
 
 
 ## Migrating from jest-serializer-vue-tjw to vue3-snapshot-serializer
