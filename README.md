@@ -9,7 +9,7 @@
 
 The new library **has all the same features**, and comes with several new features as well:
 
-Criteria                 | `jest-serializer-vue-tjw`         | `vue3-snapshot-serializer`
+&nbsp;                   | `jest-serializer-vue-tjw`         | `vue3-snapshot-serializer`
 --:                      | :--                               | :--
 First release            | 2020-01-12                        | 2024-09-06
 Made by                  | TheJaredWilcurt                   | TheJaredWilcurt
@@ -48,7 +48,7 @@ For **new projects**, you can just follow the "[Getting Started](https://TheJare
 For **existing projects** follow the migration notes below.
 
 
-## Migrating from jest-serializer-vue-tjw to vue3-snapshot-serializer
+## **Migrating** from *jest-serializer-vue-tjw* to *vue3-snapshot-serializer*
 
 If you have a Vue 2 codebase you are transitioning to Vue 3, then `jest-serializer-vue-tjw` will still work with Vue 3. So stick with it until your conversion to Vue 3 is done. Once completely over to Vue 3 (or if you have a codebase that was always Vue 3), then you can can migrate to `vue3-snapshot-serializer`.
 
@@ -65,7 +65,7 @@ If you have a Vue 2 codebase you are transitioning to Vue 3, then `jest-serializ
     ]
    ```
 1. The new library uses the "diffable" formatter by default, this will give you very different snapshots. So to make the transition smoother, we also offer the "classic" formatter, which is the same one used by `jest-serializer-vue-tjw`.
-   * In your `setup.js` ([Vitest](https://vitest.dev/config/#setupfiles)/[Jest](https://jestjs.io/docs/configuration#setupfilesafterenv-array)) add the following to your global `beforeEach`:
+   * In your [Vitest](https://vitest.dev/config/#setupfiles)/[Jest](https://jestjs.io/docs/configuration#setupfilesafterenv-array) `setup.js` file add the following to your global `beforeEach`:
      ```js
      global.beforeEach(() => {
        // Set the default settings for each snapshot
